@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>VMH homes - Website Bất động sản</title>
+<style>
+:root{--bg:#f7f8fa;--card:#fff;--tx:#1c2230;--mu:#667085;--bd:#e3e6ec;--pr:#c8501e;--prt:#fff;--ok:#1a7f4b;--wa:#b26a00;--sd:#14213d;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#13161b;--card:#1c2129;--tx:#e8eaee;--mu:#98a0ae;--bd:#2e3541;--pr:#ee7a47;--prt:#1a0d06;--ok:#4cc38a;--wa:#e0a040;--sd:#0c1018}}
+:root[data-theme="dark"]{--bg:#13161b;--card:#1c2129;--tx:#e8eaee;--mu:#98a0ae;--bd:#2e3541;--pr:#ee7a47;--prt:#1a0d06;--ok:#4cc38a;--wa:#e0a040;--sd:#0c1018}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.w{max-width:1100px;margin:0 auto;padding:0 16px}
+header{background:var(--sd);color:#fff}
+header .w{display:flex;align-items:center;justify-content:space-between;height:56px}
+.logo{font-weight:800;font-size:19px;color:#fff;text-decoration:none}.logo span{color:#ff9d6e}
+nav a{color:#d7dbe4;text-decoration:none;margin-left:16px;font-size:14px;cursor:pointer}
+nav a:hover{color:#fff}
+.hero{background:linear-gradient(135deg,#14213d,#2b4a7a);color:#fff;padding:44px 0 56px}
+.hero h1{font-size:clamp(24px,5vw,38px);margin:0 0 6px}
+.hero p{margin:0 0 20px;color:#cfd6e4}
+.sb{display:grid;grid-template-columns:2fr 1fr 1fr auto;gap:8px;background:var(--card);padding:10px;border-radius:12px;color:var(--tx)}
+@media(max-width:700px){.sb{grid-template-columns:1fr 1fr}.sb input{grid-column:1/-1}}
+input,select,textarea{font:inherit;padding:9px 10px;border:1px solid var(--bd);border-radius:8px;background:var(--card);color:var(--tx);width:100%}
+button{font:inherit;cursor:pointer;border-radius:8px;border:1px solid var(--bd);background:var(--card);color:var(--tx);padding:8px 14px}
+button.pri{background:var(--pr);color:var(--prt);border-color:var(--pr);font-weight:600}
+button:disabled{opacity:.5;cursor:not-allowed}
+.st{display:flex;gap:24px;margin:18px 0;color:var(--mu);flex-wrap:wrap}.st b{color:var(--tx);font-size:20px}
+.sec{padding:22px 0}.sec h2{margin:0 0 14px;font-size:22px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.cd{background:var(--card);border:1px solid var(--bd);border-radius:12px;overflow:hidden;cursor:pointer;transition:transform .15s}
+.cd:hover{transform:translateY(-3px)}
+.img{height:160px;position:relative;overflow:hidden}.img svg,.dh svg{display:block;width:100%;height:100%}
+.bdg{position:absolute;top:10px;left:10px;font-size:12px;padding:2px 9px;border-radius:99px;background:rgba(0,0,0,.55);color:#fff}
+.cb{padding:12px 14px}.cb h3{margin:0 0 4px;font-size:16px}
+.pr{color:var(--pr);font-weight:700;font-size:18px}
+.mu{color:var(--mu);font-size:13px}
+.empty{padding:30px;text-align:center;color:var(--mu)}
+.about{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.about div{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:16px}
+footer{background:var(--sd);color:#aab2c2;padding:22px 0;margin-top:24px;font-size:14px}
+dialog{border:1px solid var(--bd);border-radius:14px;background:var(--card);color:var(--tx);width:min(520px,94vw);padding:0;max-height:92vh}
+dialog::backdrop{background:rgba(0,0,0,.5)}
+.dh{height:230px;background:#0b1b3a}
+.tb{display:flex;gap:6px;padding:10px 18px 0;flex-wrap:wrap}.tb button.on{background:var(--pr);color:var(--prt);border-color:var(--pr)}
+.pc{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}.pc div{border-radius:10px;padding:10px 12px;font-size:14px}.pc b{display:block;margin-bottom:2px}.pc ul{margin:0;padding-left:18px}
+.u{background:rgba(26,127,75,.13)}.nh{background:rgba(198,40,40,.11)}
+@media(max-width:480px){.pc{grid-template-columns:1fr}}
+
+.db{padding:16px 18px}
+label{display:block;font-size:13px;color:var(--mu);margin:9px 0 3px}
+.row{display:flex;gap:8px;justify-content:space-between;align-items:center;margin-top:14px}
+.ok{background:rgba(26,127,75,.12);color:var(--ok);padding:10px;border-radius:8px;margin-top:10px}
+.tw{overflow-x:auto;background:var(--card);border:1px solid var(--bd);border-radius:10px;margin-bottom:20px}
+table{border-collapse:collapse;width:100%;min-width:560px}
+th,td{padding:8px 12px;text-align:left;border-bottom:1px solid var(--bd);white-space:nowrap}
+th{color:var(--mu);font-size:13px}
+.add{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin-bottom:12px}
+.nv{max-width:1100px;margin:0 auto;padding:0 16px 8px;overflow-x:auto;white-space:nowrap;display:flex;gap:2px}.nv a{margin-left:0;padding:6px 10px;border-radius:8px}.nv a:hover{background:rgba(255,255,255,.14)}
+.hero{position:relative;overflow:hidden}.hbg{position:absolute;inset:0;opacity:.6}.hbg svg{width:100%;height:100%;display:block}
+.phd{background:linear-gradient(135deg,#14213d,#2b4a7a);color:#fff;padding:28px 0}.phd h1{margin:4px 0;font-size:28px}.phd p{margin:0;color:#cfd6e4}
+.cta{display:grid;grid-template-columns:1fr 1fr;gap:18px;background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:20px}
+.bar{height:10px;background:var(--bd);border-radius:9px;overflow:hidden;margin:4px 0 12px}.bar i{display:block;height:100%;background:var(--pr)}
+.pl svg{width:100%;height:auto;border-radius:8px;margin-top:8px}
+details{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:10px 14px;margin-bottom:8px}summary{cursor:pointer;font-weight:600}
+.fg{display:grid;grid-template-columns:2fr 1fr 1fr;gap:18px}.fg a{color:#aab2c2;cursor:pointer}
+.fab{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:8px;z-index:5}
+.fab a{width:46px;height:46px;border-radius:50%;background:var(--pr);color:var(--prt);display:flex;align-items:center;justify-content:center;font-size:20px;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.3);cursor:pointer}
+@media(max-width:640px){.cta,.fg{grid-template-columns:1fr}}
+.cd:hover .img svg{transform:scale(1.06)}.img svg{transition:transform .4s}
+.ch{display:inline-block;padding:2px 10px;border-radius:99px;font-size:12px;font-weight:600;color:#fff}.c0{background:#1a9b5a}.c1{background:#f08a00}.c2{background:#7a8294}.l0{background:#2f6fe0}.l1{background:#e8731f}.l2{background:#8b3fc4}.l3{background:#0e9a8f}
+.chs{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
+.ic{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:14px}.ic>div{background:var(--card);border:1px solid var(--bd);border-radius:12px;overflow:hidden}.ic .cx{padding:12px 14px}.ic>div>svg{display:block;width:100%;height:auto}.ic .pl svg{margin:0;border-radius:0}
+ul.l{margin:6px 0 0;padding-left:18px}ul.l li{margin-bottom:3px}
+.g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;margin-bottom:22px}.g2>div{border-radius:12px;padding:14px 16px}.bl{background:rgba(47,111,224,.13)}
+.pt{border:0;background:none}.pt th{background:linear-gradient(90deg,#ff6a3d,#c2185b,#6a1b9a);color:#fff}.pt tr:nth-child(even) td{background:rgba(255,106,61,.08)}.pt .p{color:#e8400f;font-weight:800;font-size:16px}
+.lg .it{display:flex;gap:12px;align-items:flex-start;background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:12px;margin-bottom:10px}.lg svg{flex:0 0 70px;width:70px;height:84px}
+.st-ok{color:var(--ok)}.st-wait{color:var(--wa)}
+.tl{display:flex;gap:4px;margin:8px 0}.tl span{flex:1;text-align:center;font-size:11px;padding:4px 2px;border-radius:6px;background:var(--bd);color:var(--mu)}.tl span.d{background:#1a9b5a;color:#fff}.tl span.n{background:#f08a00;color:#fff}
+.lgn{max-width:340px;margin:30px auto;background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:20px}
+</style>
+</head>
+<body>
+<header><div class="w"><a class="logo" onclick="go('home')" href="#">VMH<span> homes</span></a><button class="pri" onclick="go('gia')">Nhận bảng giá</button></div>
+<nav class="nv"><a onclick="go('home')">Trang chủ</a><a onclick="go('list')">Dự án</a><a onclick="go('hatang')">Hạ tầng</a><a onclick="go('phaply')">Pháp lý</a><a onclick="go('matbang')">Mặt bằng</a><a onclick="go('gia')">Giá và chính sách</a><a onclick="go('tiendo')">Tiến độ</a><a onclick="go('faq')">FAQ</a></nav></header>
+
+<div id="home">
+<section class="hero"><div class="hbg" id="hbg"></div><div class="w" style="position:relative">
+<h1>Tìm ngôi nhà mơ ước của bạn</h1>
+<p>Căn hộ, nhà phố, biệt thự, đất nền tại Hà Nội và các tỉnh lân cận.</p>
+<div class="sb">
+<input id="q" placeholder="Tìm theo tên hoặc khu vực...">
+<select id="fl"><option value="">Mọi loại</option><option>Căn hộ</option><option>Nhà phố</option><option>Biệt thự</option><option>Đất nền</option></select>
+<select id="fg"><option value="">Mọi mức giá</option><option value="a">Dưới 3 tỷ</option><option value="b">3 - 6 tỷ</option><option value="c">Trên 6 tỷ</option></select>
+<button class="pri" onclick="go('list')">Tìm kiếm</button>
+</div></div></section>
+<div class="w"><div class="st" id="stats"></div></div>
+<section class="sec" id="list"><div class="w"><h2>Bất động sản nổi bật</h2><div class="grid" id="grid"></div></div></section>
+<section class="sec"><div class="w" id="cta"></div></section>
+<section class="sec"><div class="w"><h2>Vì sao chọn VMH homes</h2>
+<div class="about"><div><b>Pháp lý rõ ràng</b><p class="mu">Mọi sản phẩm đều được kiểm tra hồ sơ trước khi đăng bán.</p></div>
+<div><b>Tư vấn tận tâm</b><p class="mu">Đăng ký để chuyên viên liên hệ và dẫn bạn đi xem nhà.</p></div>
+<div><b>Đặt cọc minh bạch</b><p class="mu">Hóa đơn đặt cọc được lập ngay, theo dõi trạng thái thanh toán.</p></div></div></div></section>
+</div>
+
+<div id="page" style="display:none"></div>
+<div id="admin" class="w sec" style="display:none">
+<div id="lgn" class="lgn"><h2 style="margin-top:0">Đăng nhập nội bộ</h2><label>Tài khoản</label><input id="au" autocomplete="off"><label>Mật khẩu</label><input id="ap" type="password"><button class="pri" style="width:100%;margin-top:14px" onclick="login()">Đăng nhập</button><div id="am" class="mu" style="margin-top:8px"></div></div>
+<div id="adm" style="display:none"><div class="row" style="flex-wrap:wrap"><b id="who"></b><span><input id="np" type="password" placeholder="Mật khẩu mới" style="width:150px"> <button onclick="chpw()">Đổi mật khẩu</button> <button onclick="logout()">Đăng xuất</button></span></div>
+<div id="a_sp"><h3>Sản phẩm</h3><div class="add"><input id="n_ten" placeholder="Tên sản phẩm"><select id="n_loai"><option>Căn hộ</option><option>Nhà phố</option><option>Biệt thự</option><option>Đất nền</option></select><input id="n_dc" placeholder="Địa chỉ"><input id="n_dt" type="number" placeholder="Diện tích m²"><input id="n_gia" type="number" placeholder="Giá (VNĐ)"><button class="pri" onclick="addP()">Thêm</button></div><div class="tw"><table id="tp"></table></div></div>
+<div id="a_kh"><h3>Khách hàng</h3><div class="tw"><table id="tc"></table></div></div>
+<div id="a_hd"><h3>Hóa đơn</h3><div class="tw"><table id="ti"></table></div></div>
+<div id="a_us"><h3>Tài khoản nhân viên</h3><div class="add"><input id="nu" placeholder="Tài khoản"><input id="npw" type="password" placeholder="Mật khẩu (từ 6 ký tự)"><label style="margin:0"><input class="np" type="checkbox" value="sp" style="width:auto"> Sản phẩm</label><label style="margin:0"><input class="np" type="checkbox" value="kh" style="width:auto"> Khách hàng</label><label style="margin:0"><input class="np" type="checkbox" value="hd" style="width:auto"> Hóa đơn</label><button class="pri" onclick="addU()">Cấp tài khoản</button></div><div class="tw"><table id="tu"></table></div><button onclick="resetDb()">Đặt lại dữ liệu mẫu</button></div>
+</div></div>
+
+<footer><div class="w fg"><div><b style="color:#fff;font-size:18px">VMH homes</b><br>Website bất động sản: căn hộ, nhà phố, biệt thự, đất nền.<br>Hotline: 1900 0000<br>Email: lienhe@vmhhomes.example</div><div><b style="color:#fff">Dự án</b><br><a onclick="go('list')">Danh sách sản phẩm</a><br><a onclick="go('matbang')">Mặt bằng</a><br><a onclick="go('tiendo')">Tiến độ</a></div><div><b style="color:#fff">Hồ sơ</b><br><a onclick="go('hatang')">Hạ tầng</a><br><a onclick="go('phaply')">Pháp lý</a><br><a onclick="go('gia')">Giá và chính sách</a><br><a onclick="go('faq')">FAQ</a></div></div><div class="w" style="margin-top:14px"><span onclick="secret()">©</span> 2026 <b style="color:#fff">VMH homes</b>. Nội dung trên website là thông tin mẫu.</div></footer>
+<div class="fab"><a href="tel:19000000" title="Gọi hotline">📞</a><a onclick="go('gia')" title="Nhận bảng giá">💬</a></div>
+
+<dialog id="dlg"><div class="dh" id="sim"></div><div class="tb" id="tb"></div><div class="db" id="dbd"></div></dialog>
+
+<script>
+var KEY='vmh_homes_v1';
+var UID=0;
+var DEF={
+ 'Căn hộ':{uu:['Tiện ích nội khu (hồ bơi, gym, siêu thị)','An ninh 24/7, có bảo vệ','Giá dễ tiếp cận, thanh khoản tốt'],nh:['Phí quản lý hằng tháng','Không có đất riêng','Dễ ồn khi cư dân đông']},
+ 'Nhà phố':{uu:['Sở hữu đất và nhà lâu dài','Tự cải tạo, kinh doanh được','Giá trị tăng tốt theo thời gian'],nh:['Diện tích hẹp, ít thoáng','Giá trên mỗi m² cao','Phải tự lo an ninh, bảo trì']},
+ 'Biệt thự':{uu:['Không gian rộng, riêng tư','Có sân vườn, có thể có hồ bơi','Đẳng cấp, giá trị lâu dài'],nh:['Vốn đầu tư rất cao','Chi phí vận hành, bảo trì lớn','Khó bán nhanh']},
+ 'Đất nền':{uu:['Giá thấp, linh hoạt thiết kế','Tiềm năng tăng giá theo hạ tầng','Chi phí duy trì thấp'],nh:['Chưa có nhà, phải xây thêm','Thanh khoản phụ thuộc thị trường','Cần kiểm tra kỹ pháp lý, quy hoạch']}
+};
+var SPEC={
+ SP001:{uu:['Tiện ích nội khu đầy đủ: công viên, trường học, siêu thị','2 phòng ngủ hợp gia đình trẻ','Ban công hướng Đông Nam, nhiều nắng và gió'],nh:['Cách trung tâm khá xa, đi làm mất thời gian','Có phí quản lý và gửi xe hằng tháng','Nội thất cơ bản, cần đầu tư thêm']},
+ SP002:{uu:['Ngõ ô tô tránh, đi lại thuận tiện','5 tầng, vừa ở vừa cho thuê được','Gần công viên Nghĩa Đô, môi trường dễ chịu'],nh:['Đất nhỏ (52 m²), mặt tiền hẹp','Giá cao, cần vốn lớn','Nhiều tầng, bất tiện cho người lớn tuổi']},
+ SP003:{uu:['Sổ đỏ chính chủ, pháp lý rõ ràng','Đường 13 m, thuận tiện xây dựng','Gần khu công nghệ cao, có tiềm năng tăng giá'],nh:['Cách xa trung tâm Hà Nội','Tiện ích xung quanh còn đang hình thành','Chưa có nhà, cần thêm chi phí xây dựng']},
+ SP004:{uu:['180 m², 3 tầng rộng rãi và riêng tư','Có sân vườn, hồ bơi trong khu nội bộ','Không gian xanh, nhiều cây và hồ nước'],nh:['Giá rất cao (14,5 tỷ), cần tài chính mạnh','Cách xa nội thành Hà Nội','Chi phí duy trì, bảo dưỡng lớn']},
+ SP005:{uu:['3 phòng ngủ, hợp gia đình đông người','Tầng trung, view toàn thành phố','Vị trí Thanh Xuân, đi lại nội thành thuận tiện'],nh:['Mật độ cư dân cao, thang máy có thể đông giờ cao điểm','Giá cao hơn căn hộ vùng ven','Chỗ gửi ô tô có thể hạn chế']},
+ SP006:{uu:['Lô góc 2 mặt thoáng, dễ thiết kế','Gần cầu Nhật Tân, kết nối vào trung tâm','Giá thấp (2,1 tỷ), phù hợp đầu tư'],nh:['Diện tích nhỏ (75 m²)','Tiện ích khu vực còn đang phát triển','Cần kiểm tra quy hoạch và xây dựng thêm']}
+};
+function tree(x,y,k){return '<rect x="'+(x-3*k)+'" y="'+y+'" width="'+6*k+'" height="'+22*k+'" fill="#6d4c2f"/><circle cx="'+x+'" cy="'+(y-4*k)+'" r="'+20*k+'" fill="#2e9e4f"/><circle cx="'+(x-10*k)+'" cy="'+(y+4*k)+'" r="'+13*k+'" fill="#3bb35e"/><circle cx="'+(x+11*k)+'" cy="'+(y+3*k)+'" r="'+13*k+'" fill="#278a43"/>'}
+function cloud(y,d,b){return '<g opacity=".95"><animateTransform attributeName="transform" type="translate" from="-90 0" to="490 0" dur="'+d+'s" begin="-'+b+'s" repeatCount="indefinite"/><ellipse cx="0" cy="'+y+'" rx="30" ry="10" fill="#fff"/><ellipse cx="14" cy="'+(y-8)+'" rx="18" ry="11" fill="#fff"/><ellipse cx="-12" cy="'+(y-6)+'" rx="14" ry="9" fill="#fff"/></g>'}
+function art(l,n){
+ var g='g'+(++UID),i,j,B=function(a,b){return n?b:a};
+ var W=function(x,y,w,h,on){return '<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="2" fill="'+(n?(on?'#ffd54a':'#22304f'):'#bfe6ff')+'" stroke="rgba(0,0,0,.25)"/>'};
+ var s='<svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="'+g+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="'+B('#3d9bff','#0b1b3a')+'"/><stop offset="1" stop-color="'+B('#e3f4ff','#3a4f82')+'"/></linearGradient></defs><rect width="400" height="200" fill="url(#'+g+')"/>';
+ if(n){
+  s+='<circle cx="335" cy="38" r="26" fill="#fff6c9" opacity=".25"/><circle cx="335" cy="38" r="15" fill="#fff6c9"/>';
+  [[40,20],[90,45],[150,15],[220,30],[270,12],[375,85],[20,75],[190,60]].forEach(function(a,k){
+   s+='<circle cx="'+a[0]+'" cy="'+a[1]+'" r="1.6" fill="#fff"><animate attributeName="opacity" values="1;.25;1" dur="'+(2+k*.4)+'s" repeatCount="indefinite"/></circle>'});
+ }else{
+  s+='<circle cx="335" cy="38" r="34" fill="#fff3b0" opacity=".45"/><circle cx="335" cy="38" r="20" fill="#ffd54a"/>'+cloud(40,48,10)+cloud(72,70,40)+cloud(22,90,70);
+ }
+ if(l==='Đất nền')s+='<polygon points="0,160 70,100 140,160" fill="'+B('#7aa07a','#2e4a3a')+'"/><polygon points="100,160 190,88 280,160" fill="'+B('#6a9068','#27402f')+'"/><polygon points="240,160 330,105 400,160" fill="'+B('#7aa07a','#2e4a3a')+'"/>';
+ s+='<rect y="160" width="400" height="40" fill="'+B('#62c25c','#1e4d2e')+'"/>';
+ if(l==='Căn hộ'||l==='Nhà phố'){
+  s+='<rect y="182" width="400" height="18" fill="'+B('#555b64','#2a2e35')+'"/>';
+  for(i=0;i<4;i++)s+='<rect x="'+(20+i*95)+'" y="190" width="34" height="3" fill="#fff" opacity=".8"/>';
+ }
+ if(l==='Căn hộ'){
+  s+='<rect x="30" y="75" width="70" height="85" fill="'+B('#9db3d1','#2b3a5c')+'"/><rect x="300" y="60" width="75" height="100" fill="'+B('#aabfd9','#30436a')+'"/>';
+  for(i=0;i<3;i++)for(j=0;j<4;j++){s+=W(40+i*20,85+j*18,12,9,(i+j)%2)+W(310+i*22,72+j*20,12,10,(i+j)%3!==1)}
+  s+='<rect x="140" y="22" width="120" height="138" fill="'+B('#eef2f7','#3a4b72')+'" stroke="rgba(0,0,0,.2)"/><rect x="190" y="12" width="20" height="10" fill="#7c8aa3"/>';
+  for(i=0;i<4;i++)for(j=0;j<6;j++)s+=W(150+i*27,32+j*19,18,12,(i*5+j*3)%3!==0);
+  s+='<rect x="188" y="146" width="24" height="14" fill="#2f4a6b"/>'+tree(118,140,.8)+tree(285,140,.8);
+ }else if(l==='Nhà phố'){
+  s+='<rect x="15" y="85" width="95" height="75" fill="'+B('#e8c89b','#6b5a46')+'"/><rect x="290" y="78" width="95" height="82" fill="'+B('#d9a6a0','#6a4a4c')+'"/>'+W(30,100,20,18,1)+W(70,100,20,18,0)+W(305,95,20,18,0)+W(350,95,20,18,1);
+  s+='<rect x="140" y="55" width="120" height="105" fill="'+B('#f6e6c6','#8a7a5e')+'" stroke="rgba(0,0,0,.2)"/><polygon points="128,55 272,55 200,16" fill="'+B('#b5472f','#6e2b1d')+'"/>';
+  s+=W(152,62,32,20,1)+W(216,62,32,20,0)+W(152,92,32,20,1)+W(216,92,32,20,1)+'<rect x="148" y="114" width="104" height="4" fill="#556"/>';
+  s+='<rect x="186" y="126" width="28" height="34" fill="'+B('#6b3f22','#3d2312')+'"/>'+W(152,130,26,18,1)+W(222,130,26,18,0)+tree(122,140,.7);
+ }else if(l==='Biệt thự'){
+  s+='<rect x="105" y="88" width="190" height="72" fill="'+B('#fff3de','#a89878')+'" stroke="rgba(0,0,0,.2)"/><polygon points="90,88 310,88 272,46 128,46" fill="'+B('#9a3f2b','#5e261b')+'"/>'+W(184,56,32,22,1);
+  s+=W(120,100,36,30,1)+W(244,100,36,30,0)+'<rect x="186" y="108" width="28" height="52" fill="'+B('#5a3a22','#3a2514')+'"/><rect x="165" y="95" width="6" height="65" fill="'+B('#fff','#cfc7b4')+'"/><rect x="229" y="95" width="6" height="65" fill="'+B('#fff','#cfc7b4')+'"/>';
+  s+=tree(55,138,1.1)+tree(362,134,1.2)+'<ellipse cx="300" cy="184" rx="44" ry="10" fill="'+B('#38c6f0','#1a6f96')+'"/><ellipse cx="290" cy="182" rx="14" ry="3" fill="#fff"><animate attributeName="opacity" values=".1;.5;.1" dur="3s" repeatCount="indefinite"/></ellipse>';
+ }else{
+  s+='<polygon points="80,165 320,165 350,196 50,196" fill="'+B('#d6bf86','#6e5e3c')+'" stroke="#8a6d2f" stroke-dasharray="5 3"/>';
+  s+='<rect x="197" y="108" width="4" height="52" fill="#6b4a2a"/><rect x="160" y="96" width="78" height="30" rx="4" fill="#fff" stroke="#c8501e" stroke-width="2"/><text x="199" y="116" text-anchor="middle" font-size="14" font-weight="700" fill="#c8501e" font-family="sans-serif">CẦN BÁN</text>';
+  s+=tree(40,138,1)+tree(365,136,1)+tree(120,140,.7);
+ }
+ if(l==='Căn hộ'||l==='Nhà phố')s+='<g><animateTransform attributeName="transform" type="translate" from="-60 0" to="460 0" dur="9s" repeatCount="indefinite"/><rect x="0" y="183" width="30" height="9" rx="3" fill="#e53935"/><rect x="7" y="177" width="15" height="7" rx="2" fill="#ef5350"/><circle cx="7" cy="193" r="3" fill="#222"/><circle cx="23" cy="193" r="3" fill="#222"/></g>';
+ return s+'</svg>';
+}
+function plan(p){
+ var P={
+ 'Căn hộ':[['Phòng khách',10,10,170,100,'#ffe9c7'],['Bếp - ăn',180,10,100,60,'#ffd9d0'],['Ngủ 1',280,10,110,100,'#d6ecff'],['WC',180,70,50,40,'#cfeedd'],['Kho',230,70,50,40,'#e6e0f5'],['Ban công',10,110,380,50,'#d9f2d0']],
+ 'Nhà phố':[['T1: Gara',10,10,120,70,'#e2e2e2'],['T1: Phòng khách',10,80,120,80,'#ffe9c7'],['T2: Bếp - ăn',140,10,120,70,'#ffd9d0'],['T2: Ngủ 1',140,80,120,80,'#d6ecff'],['T3: Ngủ 2',270,10,120,70,'#d6ecff'],['T3: Phòng thờ',270,80,120,80,'#f5e6c8']],
+ 'Biệt thự':[['Phòng khách',10,10,150,90,'#ffe9c7'],['Bếp - ăn',160,10,100,90,'#ffd9d0'],['Ngủ master',260,10,130,90,'#d6ecff'],['Ngủ 2',10,100,120,60,'#d6ecff'],['Ngủ 3',130,100,120,60,'#d6ecff'],['Sân vườn - hồ bơi',250,100,140,60,'#bfeaf7']],
+ 'Đất nền':[['Khu xây nhà',40,15,320,85,'#f4e7bb'],['Sân - đường vào',40,100,320,50,'#d7d7d7']]};
+ var r=P[p.loai]||P['Nhà phố'];
+ return '<svg viewBox="0 0 400 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="170" fill="#f3f1ea"/>'+r.map(function(a){
+  return '<rect x="'+a[1]+'" y="'+a[2]+'" width="'+a[3]+'" height="'+a[4]+'" fill="'+a[5]+'" stroke="#4a5568" stroke-width="2"/><text x="'+(a[1]+a[3]/2)+'" y="'+(a[2]+a[4]/2+4)+'" text-anchor="middle" font-size="12" fill="#222" font-family="sans-serif">'+a[0]+'</text>'}).join('')+
+  '<text x="200" y="166" text-anchor="middle" font-size="10" fill="#555" font-family="sans-serif">Mặt bằng minh họa - '+p.dt+' m²</text></svg>';
+}
+function sim(id,m){
+ var p=db.sp.find(function(x){return x.id===id});
+ $('sim').innerHTML=m==='plan'?plan(p):art(p.loai,m==='night');
+ $('sim').style.background=m==='plan'?'#f3f1ea':'';
+ $('tb').innerHTML=[['day','☀️ Ban ngày'],['night','🌙 Ban đêm'],['plan','📐 Mặt bằng']].map(function(a){
+  return '<button class="'+(a[0]===m?'on':'')+'" onclick="sim(\''+id+'\',\''+a[0]+'\')">'+a[1]+'</button>'}).join('');
+}
+function pcHtml(p){
+ var s=SPEC[p.id]||DEF[p.loai]||DEF['Nhà phố'],u=s.uu.slice(),n=s.nh.slice();
+ if(p.dt){var m=Math.round(p.gia/p.dt/1e6),t='Giá khoảng '+m+' triệu/m²';
+  if(m>100)n.push(t+', thuộc mức cao');else if(m<50)u.push(t+', khá dễ tiếp cận')}
+ var li=function(x){return '<li>'+esc(x)+'</li>'};
+ return '<div class="pc"><div class="u"><b>✅ Ưu điểm</b><ul>'+u.map(li).join('')+'</ul></div><div class="nh"><b>⚠️ Nhược điểm</b><ul>'+n.map(li).join('')+'</ul></div></div>';
+}
+
+var COL={'Căn hộ':['#3a7bd5','#00d2ff','🏢'],'Nhà phố':['#f7971e','#ffd200','🏠'],'Biệt thự':['#11998e','#38ef7d','🏡'],'Đất nền':['#8e9eab','#c9d6df','🌳']};
+function seed(){return{
+ sp:[
+ {id:'SP001',ten:'Căn hộ Vinhomes Smart City',loai:'Căn hộ',dc:'Nam Từ Liêm, Hà Nội',dt:68,gia:3200000000,tt:'Đang bán',mt:'2 phòng ngủ, ban công hướng Đông Nam, nội thất cơ bản.'},
+ {id:'SP002',ten:'Nhà phố ngõ 120 Hoàng Quốc Việt',loai:'Nhà phố',dc:'Cầu Giấy, Hà Nội',dt:52,gia:8500000000,tt:'Đang bán',mt:'5 tầng, ngõ ô tô tránh, gần công viên Nghĩa Đô.'},
+ {id:'SP003',ten:'Đất nền Hòa Lạc',loai:'Đất nền',dc:'Thạch Thất, Hà Nội',dt:100,gia:2400000000,tt:'Đã bán',mt:'Sổ đỏ chính chủ, đường 13 m, gần khu công nghệ cao.'},
+ {id:'SP004',ten:'Biệt thự song lập Ecopark',loai:'Biệt thự',dc:'Văn Giang, Hưng Yên',dt:180,gia:14500000000,tt:'Đang bán',mt:'3 tầng, sân vườn, hồ bơi khu nội bộ.'},
+ {id:'SP005',ten:'Căn hộ Gold Season Thanh Xuân',loai:'Căn hộ',dc:'Thanh Xuân, Hà Nội',dt:85,gia:4600000000,tt:'Đang bán',mt:'3 phòng ngủ, tầng trung, view toàn thành phố.'},
+ {id:'SP006',ten:'Đất nền Đông Anh',loai:'Đất nền',dc:'Đông Anh, Hà Nội',dt:75,gia:2100000000,tt:'Đang bán',mt:'Lô góc 2 mặt thoáng, gần cầu Nhật Tân.'}],
+ kh:[{id:'KH001',ten:'Trần Thị Bình',sdt:'0912345678',email:'binh@example.com',nc:'Đầu tư đất nền'}],
+ hd:[{id:'HD001',kh:'KH001',sp:'SP003',ngay:'2026-10-05',tien:2400000000,tt:'Đã thanh toán'}]};}
+var db;
+function load(){try{var s=localStorage.getItem(KEY);if(s)return JSON.parse(s)}catch(e){}return seed()}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(db))}catch(e){}}
+db=load();
+function $(i){return document.getElementById(i)}
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function gia(n){n=Number(n);return n>=1e9?(n/1e9).toLocaleString('vi-VN',{maximumFractionDigits:2})+' tỷ':(n/1e6).toLocaleString('vi-VN')+' triệu'}
+function vnd(n){return Number(n||0).toLocaleString('vi-VN')+' đ'}
+function nid(a,p){var m=a.reduce(function(x,r){return Math.max(x,parseInt(r.id.slice(p.length),10)||0)},0)+1;return p+String(m).padStart(3,'0')}
+function match(p){
+ var q=$('q').value.trim().toLowerCase(),l=$('fl').value,g=$('fg').value;
+ if(q&&(p.ten+' '+p.dc).toLowerCase().indexOf(q)<0)return false;
+ if(l&&p.loai!==l)return false;
+ if(g==='a'&&p.gia>=3e9)return false;
+ if(g==='b'&&(p.gia<3e9||p.gia>6e9))return false;
+ if(g==='c'&&p.gia<=6e9)return false;
+ return true;
+}
+function grad(l){var c=COL[l]||COL['Nhà phố'];return 'linear-gradient(135deg,'+c[0]+','+c[1]+')'}
+function drawHome(){
+ $('stats').innerHTML='<div><b>'+db.sp.length+'</b><br>sản phẩm</div><div><b>'+db.sp.filter(function(p){return p.tt==='Đang bán'}).length+'</b><br>đang mở bán</div><div><b>'+db.kh.length+'</b><br>khách hàng</div>';
+ var rs=db.sp.filter(match);
+ $('grid').innerHTML=rs.length?rs.map(function(p){
+  return '<div class="cd" onclick="openP(\''+p.id+'\')"><div class="img">'+art(p.loai,false)+'<span class="bdg">'+esc(p.tt)+'</span></div>'+
+  '<div class="cb"><h3>'+esc(p.ten)+'</h3><div class="mu">'+esc(p.dc)+'</div><div class="mu">'+esc(p.loai)+' · '+p.dt+' m²</div><div class="pr">'+gia(p.gia)+'</div></div></div>'}).join(''):'<div class="empty">Không tìm thấy sản phẩm phù hợp.</div>';
+}
+function openP(id){
+ var p=db.sp.find(function(x){return x.id===id}),can=p.tt==='Đang bán';
+ sim(id,'day');
+ $('dbd').innerHTML='<h3 style="margin:0">'+esc(p.ten)+'</h3><div class="mu">'+esc(p.dc)+' · '+esc(p.loai)+' · '+p.dt+' m² · '+esc(p.tt)+'</div>'+
+ '<div class="pr" style="margin:6px 0">'+gia(p.gia)+'</div><p>'+esc(p.mt||'')+'</p>'+pcHtml(p)+
+ (can?'<b>Đăng ký tư vấn và đặt cọc</b><label>Họ tên</label><input id="f_ten"><label>Số điện thoại</label><input id="f_sdt"><label>Email</label><input id="f_em"><label>Nhu cầu / lời nhắn</label><textarea id="f_nc" rows="2"></textarea>'+
+ '<p class="mu">Tiền đặt cọc: 10% giá trị = '+vnd(p.gia*0.1)+'. Hóa đơn sẽ được lập với trạng thái chưa thanh toán.</p>'+
+ '<div class="row"><button onclick="$(\'dlg\').close()">Đóng</button><button class="pri" onclick="book(\''+p.id+'\')">Gửi đăng ký</button></div><div id="msg"></div>'
+ :'<div class="mu">Sản phẩm này hiện không còn mở bán.</div><div class="row"><button onclick="$(\'dlg\').close()">Đóng</button></div>');
+ $('dlg').showModal();
+}
+function book(id){
+ var ten=$('f_ten').value.trim(),sdt=$('f_sdt').value.trim();
+ if(!ten||!/^0\d{9}$/.test(sdt)){alert('Vui lòng nhập họ tên và số điện thoại 10 số (bắt đầu bằng 0).');return}
+ var p=db.sp.find(function(x){return x.id===id});
+ var k=db.kh.find(function(x){return x.sdt===sdt});
+ if(!k){k={id:nid(db.kh,'KH'),ten:ten,sdt:sdt,email:$('f_em').value.trim(),nc:$('f_nc').value.trim()};db.kh.push(k)}
+ var h={id:nid(db.hd,'HD'),kh:k.id,sp:p.id,ngay:new Date().toISOString().slice(0,10),tien:p.gia*0.1,tt:'Chưa thanh toán'};
+ db.hd.push(h);p.tt='Đã đặt cọc';save();drawHome();
+ $('dbd').innerHTML='<div class="ok"><b>Đăng ký thành công!</b><br>Mã hóa đơn đặt cọc: '+h.id+' ('+vnd(h.tien)+'). Chuyên viên sẽ liên hệ '+esc(k.ten)+' qua số '+esc(k.sdt)+'.</div><div class="row"><span></span><button onclick="$(\'dlg\').close()">Đóng</button></div>';
+}
+function tbl(el,head,rows){$(el).innerHTML='<tr>'+head.map(function(h){return '<th>'+h+'</th>'}).join('')+'</tr>'+(rows.join('')||'<tr><td>Trống</td></tr>')}
+function kn(id){var k=db.kh.find(function(x){return x.id===id});return k?esc(k.id+' - '+k.ten):'(đã xóa)'}
+function sn(id){var s=db.sp.find(function(x){return x.id===id});return s?esc(s.id+' - '+s.ten):'(đã xóa)'}
+function draw(){
+ drawHome();
+ tbl('tp',['Mã','Tên','Loại','Giá','Trạng thái',''],db.sp.map(function(p){
+  return '<tr><td>'+p.id+'</td><td>'+esc(p.ten)+'</td><td>'+esc(p.loai)+'</td><td>'+gia(p.gia)+'</td><td><select onchange="setTT(\''+p.id+'\',this.value)">'+['Đang bán','Đã đặt cọc','Đã bán'].map(function(o){return '<option'+(o===p.tt?' selected':'')+'>'+o+'</option>'}).join('')+'</select></td><td><button onclick="delP(\''+p.id+'\')">Xóa</button></td></tr>'}));
+ tbl('tc',['Mã','Họ tên','SĐT','Email','Nhu cầu'],db.kh.map(function(k){
+  return '<tr><td>'+k.id+'</td><td>'+esc(k.ten)+'</td><td>'+esc(k.sdt)+'</td><td>'+esc(k.email)+'</td><td>'+esc(k.nc)+'</td></tr>'}));
+ tbl('ti',['Mã','Khách hàng','Sản phẩm','Ngày','Số tiền','Trạng thái',''],db.hd.map(function(h){
+  return '<tr><td>'+h.id+'</td><td>'+kn(h.kh)+'</td><td>'+sn(h.sp)+'</td><td>'+h.ngay+'</td><td>'+vnd(h.tien)+'</td><td>'+h.tt+'</td><td>'+(h.tt==='Đã thanh toán'?'':'<button class="pri" onclick="pay(\''+h.id+'\')">Xác nhận thanh toán</button>')+'</td></tr>'}));
+}
+function setTT(id,v){db.sp.find(function(p){return p.id===id}).tt=v;save();draw()}
+function delP(id){
+ if(db.hd.some(function(h){return h.sp===id})){alert('Không thể xóa: sản phẩm đã có hóa đơn.');return}
+ if(confirm('Xóa '+id+'?')){db.sp=db.sp.filter(function(p){return p.id!==id});save();draw()}}
+function pay(id){
+ var h=db.hd.find(function(x){return x.id===id});h.tt='Đã thanh toán';
+ var p=db.sp.find(function(x){return x.id===h.sp});if(p)p.tt='Đã bán';save();draw()}
+function addP(){
+ var t=$('n_ten').value.trim(),g=Number($('n_gia').value);
+ if(!t||!g){alert('Nhập tên và giá.');return}
+ db.sp.push({id:nid(db.sp,'SP'),ten:t,loai:$('n_loai').value,dc:$('n_dc').value.trim(),dt:Number($('n_dt').value||0),gia:g,tt:'Đang bán',mt:''});
+ save();['n_ten','n_dc','n_dt','n_gia'].forEach(function(i){$(i).value=''});draw()}
+['q','fl','fg'].forEach(function(i){$(i).oninput=drawHome;$(i).onchange=drawHome});
+drawHome();
+function cta(k){return '<div class="cta"><div><h2 style="margin:0 0 6px">Đăng ký nhận bảng giá và tư vấn</h2><p class="mu">Để lại thông tin, chuyên viên VMH homes sẽ liên hệ. Thông tin chỉ dùng để tư vấn.</p></div><div><input id="c_ten_'+k+'" placeholder="Họ và tên"><input id="c_sdt_'+k+'" placeholder="Số điện thoại" style="margin-top:8px"><button class="pri" style="margin-top:8px;width:100%" onclick="lead(\''+k+'\')">Nhận bảng giá</button><div id="c_msg_'+k+'"></div></div></div>'}
+function lead(k){
+ var ten=$('c_ten_'+k).value.trim(),sdt=$('c_sdt_'+k).value.trim();
+ if(!ten||!/^0\d{9}$/.test(sdt)){alert('Vui lòng nhập họ tên và số điện thoại 10 số (bắt đầu bằng 0).');return}
+ if(!db.kh.some(function(x){return x.sdt===sdt}))db.kh.push({id:nid(db.kh,'KH'),ten:ten,sdt:sdt,email:'',nc:'Nhận bảng giá'});
+ save();drawHome();
+ $('c_msg_'+k).innerHTML='<div class="ok">Cảm ơn '+esc(ten)+'! VMH homes sẽ gửi bảng giá qua số '+esc(sdt)+'.</div>';
+}
+function bar(l,n,t){return '<div>'+l+': <b>'+n+'</b> / '+t+'</div><div class="bar"><i style="width:'+(t?Math.round(n*100/t):0)+'%"></i></div>'}
+var PAGES={
+ vitri:{t:'Vị trí',d:'Sản phẩm của VMH homes tập trung tại Hà Nội và các khu vực lân cận.',
+  c:[['Kết nối giao thông','Ưu tiên sản phẩm gần các trục đường lớn, thuận tiện vào trung tâm.'],['Môi trường sống','Mỗi sản phẩm có mô tả khu vực xung quanh và tiện ích dân cư.'],['Giá trị lâu dài','Vị trí tốt giúp dễ cho thuê và bán lại.']],
+  x:function(){var m={};db.sp.forEach(function(p){(m[p.dc]=m[p.dc]||[]).push(p)});
+   return '<h2 style="margin-top:22px">Sản phẩm theo khu vực</h2><div class="tw"><table><tr><th>Khu vực</th><th>Số sản phẩm</th><th>Sản phẩm</th></tr>'+Object.keys(m).map(function(k){return '<tr><td>'+esc(k)+'</td><td>'+m[k].length+'</td><td>'+m[k].map(function(p){return esc(p.ten)}).join(', ')+'</td></tr>'}).join('')+'</table></div>'}},
+ hatang:{t:'Hạ tầng',d:'VMH homes đánh giá hạ tầng quanh mỗi sản phẩm theo 4 nhóm. Chi tiết nằm trong phần mô tả và ưu nhược điểm của từng sản phẩm.',
+  c:[['Giao thông','Đường vào, bãi đỗ xe, khoảng cách tới trục chính.'],['Tiện ích','Siêu thị, công viên, khu vui chơi, thể thao.'],['Giáo dục và y tế','Trường học, bệnh viện, phòng khám gần nhất.'],['Thương mại','Chợ, trung tâm thương mại, dịch vụ hằng ngày.']]},
+ phaply:{t:'Pháp lý',d:'Các hồ sơ cần kiểm tra trước khi đặt cọc. Nội dung mẫu, hãy thay bằng thông tin thật của dự án.',
+  c:[['Giấy chứng nhận quyền sử dụng đất','Đúng chủ sở hữu, đúng diện tích, đúng mục đích sử dụng.'],['Quy hoạch và giấy phép xây dựng','Đối chiếu quy hoạch khu vực, giấy phép với thực tế công trình.'],['Hợp đồng đặt cọc, mua bán','Điều khoản về giá, tiến độ thanh toán, bàn giao, phạt vi phạm.'],['Tình trạng tài sản','Có thế chấp, tranh chấp hay không trước khi giao dịch.']]},
+ matbang:{t:'Mặt bằng',d:'Sơ đồ minh họa theo từng loại sản phẩm. Diện tích là trung bình các sản phẩm đang có.',
+  x:function(){return '<div class="about" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">'+['Căn hộ','Nhà phố','Biệt thự','Đất nền'].map(function(l){
+   var a=db.sp.filter(function(p){return p.loai===l}),dt=a.length?Math.round(a.reduce(function(s,p){return s+Number(p.dt||0)},0)/a.length):'-';
+   return '<div><b>'+l+'</b> <span class="mu">('+a.length+' sản phẩm)</span><span class="pl" style="display:block">'+plan({loai:l,dt:dt})+'</span></div>'}).join('')+'</div>'}},
+ gia:{t:'Giá và chính sách',d:'Bảng giá cập nhật trực tiếp từ cơ sở dữ liệu. Bấm "Xem" để xem mô phỏng và đặt cọc.',
+  c:[['Đặt cọc 10%','Đặt cọc 10% giá trị, hóa đơn được lập ngay khi gửi đăng ký.'],['Minh bạch','Theo dõi trạng thái hóa đơn: chưa thanh toán hoặc đã thanh toán.'],['Tư vấn thanh toán','Chuyên viên tư vấn phương án thanh toán phù hợp.']],
+  x:function(){return '<h2 style="margin-top:22px">Bảng giá</h2><div class="tw"><table><tr><th>Sản phẩm</th><th>Loại</th><th>Diện tích</th><th>Giá</th><th>Giá/m²</th><th>Trạng thái</th><th></th></tr>'+db.sp.map(function(p){
+   return '<tr><td>'+esc(p.ten)+'</td><td>'+esc(p.loai)+'</td><td>'+p.dt+' m²</td><td>'+gia(p.gia)+'</td><td>'+(p.dt?Math.round(p.gia/p.dt/1e6)+' triệu':'-')+'</td><td>'+esc(p.tt)+'</td><td><button onclick="openP(\''+p.id+'\')">Xem</button></td></tr>'}).join('')+'</table></div>'}},
+ tiendo:{t:'Tiến độ',d:'Tiến độ bán hàng thực tế, tính từ cơ sở dữ liệu.',
+  x:function(){var t=db.sp.length,c=function(s){return db.sp.filter(function(p){return p.tt===s}).length};
+   return '<div class="about" style="grid-template-columns:1fr"><div>'+bar('Đang mở bán',c('Đang bán'),t)+bar('Đã đặt cọc',c('Đã đặt cọc'),t)+bar('Đã bán',c('Đã bán'),t)+
+   bar('Hóa đơn đã thanh toán',db.hd.filter(function(h){return h.tt==='Đã thanh toán'}).length,db.hd.length)+'</div></div>'}},
+ faq:{t:'Câu hỏi thường gặp',d:'Giải đáp nhanh trước khi bạn đăng ký.',
+  x:function(){return [['Đặt cọc bao nhiêu?','10% giá trị sản phẩm. Sau khi gửi đăng ký, hóa đơn đặt cọc được lập với trạng thái chưa thanh toán.'],['Có được xem nhà trước khi cọc không?','Có. Chuyên viên sẽ liên hệ để hẹn lịch xem.'],['Sản phẩm đã đặt cọc còn mua được không?','Sản phẩm chuyển sang "Đã đặt cọc" và tạm khóa cho khách khác.'],['Thông tin của tôi được dùng để làm gì?','Chỉ dùng để tư vấn về sản phẩm của VMH homes.']].map(function(q){return '<details><summary>'+q[0]+'</summary><p class="mu">'+q[1]+'</p></details>'}).join('')}}
+};
+function showPage(k){
+ var p=PAGES[k];
+ $('page').innerHTML='<section class="phd"><div class="w"><div style="color:#cfd6e4;font-size:13px">Trang chủ / '+p.t+'</div><h1>'+p.t+'</h1><p>'+p.d+'</p></div></section><div class="w sec">'+
+  (p.c?'<div class="about">'+p.c.map(function(c){return '<div><b>'+c[0]+'</b><p class="mu">'+c[1]+'</p></div>'}).join('')+'</div>':'')+(p.x?p.x():'')+'</div><div class="w sec">'+cta(k)+'</div>';
+}
+function go(v){
+ var pg=PAGES[v];
+ $('home').style.display=(v==='home'||v==='list')?'':'none';
+ $('page').style.display=pg?'':'none';
+ $('admin').style.display=v==='admin'?'':'none';
+ if(v==='admin')draw();
+ if(pg)showPage(v);
+ if(v==='list')$('list').scrollIntoView();else window.scrollTo(0,0);
+}
+$('cta').innerHTML=cta('home');
+$('hbg').innerHTML=art('Biệt thự',true);
+var LV={'Căn hộ':'l0','Nhà phố':'l1','Biệt thự':'l2','Đất nền':'l3'},TV={'Đang bán':'c0','Đã đặt cọc':'c1','Đã bán':'c2'};
+function chip(t,c){return '<span class="ch '+c+'">'+esc(t)+'</span>'}
+function li(x){return '<li>'+esc(x)+'</li>'}
+function owner(p){
+ var h=db.hd.filter(function(x){return x.sp===p.id}),pd=h.filter(function(x){return x.tt==='Đã thanh toán'})[0],dc=h.filter(function(x){return x.tt!=='Đã thanh toán'})[0];
+ var n=function(x){var k=db.kh.find(function(y){return y.id===x.kh});return k?k.ten:'khách đã xóa'};
+ return pd?{s:'ok',t:'Đã sang tên cho '+n(pd)+' (hóa đơn '+pd.id+')'}:dc?{s:'wait',t:'Đã nhận cọc từ '+n(dc)+', chờ thanh toán đủ để sang tên'}:{s:'none',t:'Chưa phát sinh sang tên, sản phẩm đang mở bán'};
+}
+function hs(id){var s=0;for(var i=0;i<id.length;i++)s+=id.charCodeAt(i)*(i+3);return s}
+function mapArt(p){
+ var h=hs(p.id),x=130+h*37%140,y=80+h*53%60,nm=p.ten.length>24?p.ten.slice(0,23)+'…':p.ten;
+ return '<svg viewBox="0 0 400 230" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="230" fill="#eae7df"/><path d="M0 195 C80 150 150 220 230 175 S350 125 400 155 L400 230 L0 230Z" fill="#a8d8f5"/><rect x="18" y="18" width="95" height="50" rx="6" fill="#c5e3b5"/><rect x="290" y="24" width="85" height="46" rx="6" fill="#c5e3b5"/><rect x="30" y="110" width="60" height="30" fill="#d9d5cc"/><rect x="300" y="100" width="70" height="35" fill="#d9d5cc"/><rect x="215" y="14" width="50" height="28" fill="#d9d5cc"/>'+
+ '<path d="M0 100 H400 M200 0 V170 M95 0 V150 M310 0 V160" stroke="#fff" stroke-width="9" fill="none"/><path d="M0 55 L400 140" stroke="#f7c948" stroke-width="8" fill="none"/><path d="M0 55 L400 140" stroke="#e0a800" stroke-width="1" fill="none"/>'+
+ '<text x="22" y="82" font-size="9" fill="#4a7a3a" font-family="sans-serif">Công viên</text><text x="300" y="86" font-size="9" fill="#4a7a3a" font-family="sans-serif">Khu cây xanh</text><text x="260" y="205" font-size="9" fill="#3a78a8" font-family="sans-serif">Sông</text><text x="205" y="96" font-size="9" fill="#666" font-family="sans-serif">Đường chính</text>'+
+ '<g transform="translate('+x+','+y+')"><circle r="8" fill="#e53935" opacity=".4"><animate attributeName="r" values="8;28;8" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values=".5;0;.5" dur="2s" repeatCount="indefinite"/></circle><g><animateTransform attributeName="transform" type="translate" values="0 0;0 -6;0 0" dur="1s" repeatCount="indefinite"/><path d="M0 0 C-14 -16 -12 -34 0 -34 C12 -34 14 -16 0 0Z" fill="#e53935" stroke="#b71c1c"/><circle cy="-22" r="5" fill="#fff"/></g><rect x="-72" y="-64" width="144" height="18" rx="4" fill="#fff" stroke="#bbb"/><text y="-51" text-anchor="middle" font-size="10" fill="#222" font-family="sans-serif">'+esc(nm)+'</text></g>'+
+ '<text x="8" y="224" font-size="9" fill="#555" font-family="sans-serif">Bản đồ minh họa, vị trí gần đúng: '+esc(p.dc)+'</text></svg>';
+}
+function plan(p){
+ var P={
+ 'Căn hộ':[['Phòng khách',10,10,170,100,'#ffe9c7','🛋️'],['Bếp - ăn',180,10,100,60,'#ffd9d0','🍳'],['Ngủ 1',280,10,110,100,'#d6ecff','🛏️'],['WC',180,70,50,40,'#cfeedd','🚿'],['Kho',230,70,50,40,'#e6e0f5','📦'],['Ban công',10,110,380,50,'#d9f2d0','🪴']],
+ 'Nhà phố':[['T1: Gara',10,10,120,70,'#e2e2e2','🚗'],['T1: Khách',10,80,120,80,'#ffe9c7','🛋️'],['T2: Bếp - ăn',140,10,120,70,'#ffd9d0','🍳'],['T2: Ngủ 1',140,80,120,80,'#d6ecff','🛏️'],['T3: Ngủ 2',270,10,120,70,'#d6ecff','🛏️'],['T3: Phòng thờ',270,80,120,80,'#f5e6c8','🕯️']],
+ 'Biệt thự':[['Phòng khách',10,10,150,90,'#ffe9c7','🛋️'],['Bếp - ăn',160,10,100,90,'#ffd9d0','🍽️'],['Ngủ master',260,10,130,90,'#d6ecff','🛏️'],['Ngủ 2',10,100,120,60,'#d6ecff','🛏️'],['Ngủ 3',130,100,120,60,'#d6ecff','🧸'],['Sân vườn, hồ bơi',250,100,140,60,'#bfeaf7','🏊']],
+ 'Đất nền':[['Khu xây nhà',40,15,320,85,'#f4e7bb','🏗️'],['Sân, đường vào',40,100,320,50,'#d7d7d7','🌳']]};
+ var r=P[p.loai]||P['Nhà phố'];
+ return '<svg viewBox="0 0 400 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="170" fill="#f3f1ea"/>'+r.map(function(a){var cx=a[1]+a[3]/2,cy=a[2]+a[4]/2;
+  return '<rect x="'+a[1]+'" y="'+a[2]+'" width="'+a[3]+'" height="'+a[4]+'" fill="'+a[5]+'" stroke="#4a5568" stroke-width="2"/><text x="'+cx+'" y="'+(cy-2)+'" text-anchor="middle" font-size="'+(a[4]>=55?22:15)+'">'+a[6]+'</text><text x="'+cx+'" y="'+(cy+(a[4]>=55?16:14))+'" text-anchor="middle" font-size="10" fill="#222" font-family="sans-serif">'+a[0]+'</text>'}).join('')+
+  '<text x="200" y="167" text-anchor="middle" font-size="9" fill="#555" font-family="sans-serif">Mặt bằng minh họa - '+p.dt+' m²</text></svg>';
+}
+function sim(id,m){
+ var p=db.sp.find(function(x){return x.id===id});
+ $('sim').innerHTML=m==='plan'?plan(p):m==='map'?mapArt(p):art(p.loai,m==='night');
+ $('sim').style.background=m==='plan'?'#f3f1ea':'';
+ $('tb').innerHTML=[['day','☀️ Ban ngày'],['night','🌙 Ban đêm'],['plan','📐 Mặt bằng'],['map','📍 Bản đồ']].map(function(a){
+  return '<button class="'+(a[0]===m?'on':'')+'" onclick="sim(\''+id+'\',\''+a[0]+'\')">'+a[1]+'</button>'}).join('')+
+  (m==='map'?'<a href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(p.dc)+'" target="_blank" rel="noopener" style="align-self:center;font-size:13px">Mở Google Maps</a>':'');
+}
+var SV=function(b){return '<svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg">'+b+'</svg>'};
+var mv=function(a,b,d,i){return '<g><animateTransform attributeName="transform" type="translate" from="'+a+' 0" to="'+b+' 0" dur="'+d+'s" repeatCount="indefinite"/>'+i+'</g>'};
+var sway=function(x,d){return '<g transform="translate('+x+',112)"><g><animateTransform attributeName="transform" type="rotate" values="-3;3;-3" dur="'+d+'s" repeatCount="indefinite"/><rect x="-3" y="-34" width="6" height="34" fill="#6d4c2f"/><circle cy="-46" r="22" fill="#2e9e4f"/><circle cx="-12" cy="-38" r="13" fill="#3bb35e"/></g></g>'};
+function infraArt(k){
+ var o='';
+ if(k==='giaothong')o='<rect width="400" height="160" fill="#cfe8ff"/><rect x="20" y="55" width="40" height="50" fill="#9fb4cf"/><rect x="70" y="40" width="50" height="65" fill="#8aa1c0"/><rect x="300" y="60" width="45" height="45" fill="#9fb4cf"/><rect y="100" width="400" height="60" fill="#4b5058"/><line x1="0" y1="130" x2="400" y2="130" stroke="#fff" stroke-width="3" stroke-dasharray="20 14"><animate attributeName="stroke-dashoffset" from="0" to="-34" dur=".6s" repeatCount="indefinite"/></line><rect x="150" y="78" width="4" height="24" fill="#666"/><rect x="132" y="66" width="40" height="14" rx="3" fill="#1e5fd0"/><text x="152" y="77" text-anchor="middle" font-size="9" fill="#fff" font-family="sans-serif">BUS</text><rect x="355" y="46" width="6" height="56" fill="#444"/><circle cx="358" cy="54" r="5"><animate attributeName="fill" values="#e53935;#555;#555;#e53935" dur="6s" repeatCount="indefinite"/></circle><circle cx="358" cy="68" r="5"><animate attributeName="fill" values="#555;#555;#43a047;#555" dur="6s" repeatCount="indefinite"/></circle>'+
+  mv(-100,460,12,'<rect y="106" width="64" height="24" rx="4" fill="#f5b800"/><rect x="6" y="110" width="12" height="9" fill="#cfe8ff"/><rect x="22" y="110" width="12" height="9" fill="#cfe8ff"/><rect x="38" y="110" width="12" height="9" fill="#cfe8ff"/><circle cx="14" cy="132" r="5" fill="#222"/><circle cx="50" cy="132" r="5" fill="#222"/>')+
+  mv(460,-80,7,'<rect y="138" width="34" height="13" rx="4" fill="#e53935"/><rect x="8" y="131" width="17" height="9" rx="3" fill="#ef5350"/><circle cx="8" cy="152" r="4" fill="#222"/><circle cx="26" cy="152" r="4" fill="#222"/>');
+ else if(k==='tienich')o='<rect width="400" height="160" fill="#d8f1ff"/><circle cx="360" cy="30" r="16" fill="#ffd54a"/><rect y="112" width="400" height="48" fill="#7ccf6a"/>'+sway(50,3)+sway(120,4)+sway(380,3.5)+'<rect x="170" y="124" width="110" height="30" rx="6" fill="#3cc8f0"/><path d="M175 138 q10 -6 20 0 t20 0 t20 0 t20 0 t20 0" fill="none" stroke="#fff" stroke-width="2"><animateTransform attributeName="transform" type="translate" values="0 0;-20 0" dur="1.5s" repeatCount="indefinite"/></path><line x1="310" y1="72" x2="350" y2="72" stroke="#555" stroke-width="3"/><line x1="310" y1="72" x2="302" y2="114" stroke="#555" stroke-width="3"/><line x1="350" y1="72" x2="358" y2="114" stroke="#555" stroke-width="3"/><g transform="translate(330,72)"><g><animateTransform attributeName="transform" type="rotate" values="-22;22;-22" dur="2s" repeatCount="indefinite"/><line y2="34" stroke="#555"/><rect x="-10" y="34" width="20" height="4" fill="#e8731f"/></g></g><rect x="190" y="112" width="40" height="4" fill="#8a5a2b"/>';
+ else if(k==='giaoduc')o='<rect width="400" height="160" fill="#d8f1ff"/><rect y="120" width="400" height="40" fill="#8bc34a"/><rect x="20" y="50" width="130" height="70" fill="#f6d58e"/><polygon points="12,50 158,50 85,20" fill="#c0392b"/><rect x="75" y="88" width="20" height="32" fill="#7a4a2a"/><rect x="32" y="64" width="22" height="18" fill="#bfe6ff"/><rect x="116" y="64" width="22" height="18" fill="#bfe6ff"/><rect x="168" y="20" width="3" height="100" fill="#777"/><rect x="171" y="22" width="22" height="12" fill="#e53935"><animate attributeName="width" values="22;16;22" dur="1s" repeatCount="indefinite"/></rect>'+
+  mv(-10,120,9,'<circle cx="0" cy="108" r="5" fill="#f3c9a0"/><rect x="-4" y="113" width="8" height="12" fill="#2f6fe0"/>')+mv(-40,100,11,'<circle cx="0" cy="108" r="5" fill="#f3c9a0"/><rect x="-4" y="113" width="8" height="12" fill="#e8731f"/>')+
+  '<rect x="230" y="45" width="130" height="75" fill="#fff" stroke="#9aa3b2"/><g fill="#e53935"><animate attributeName="opacity" values="1;.35;1" dur="1.4s" repeatCount="indefinite"/><rect x="287" y="55" width="16" height="40"/><rect x="275" y="67" width="40" height="16"/></g><text x="295" y="112" text-anchor="middle" font-size="10" fill="#555" font-family="sans-serif">Y TẾ</text>'+
+  mv(-60,460,8,'<rect y="128" width="44" height="18" rx="3" fill="#fff" stroke="#999"/><rect x="2" y="136" width="40" height="3" fill="#e53935"/><circle cx="22" cy="126" r="3" fill="#e53935"><animate attributeName="fill" values="#e53935;#2f6fe0;#e53935" dur=".6s" repeatCount="indefinite"/></circle><circle cx="10" cy="147" r="4" fill="#222"/><circle cx="34" cy="147" r="4" fill="#222"/>');
+ else o='<rect width="400" height="160" fill="#ffe9f0"/><rect y="120" width="400" height="40" fill="#c9c9c9"/><rect x="40" y="35" width="210" height="85" fill="#ffd1dc"/><rect x="70" y="45" width="150" height="22" rx="3" fill="#c2185b"><animate attributeName="opacity" values="1;.55;1" dur="1.6s" repeatCount="indefinite"/></rect><text x="145" y="61" text-anchor="middle" font-size="13" font-weight="700" fill="#fff" font-family="sans-serif">SIÊU THỊ</text><rect x="120" y="85" width="50" height="35" fill="#bfe6ff"/><rect x="40" y="76" width="210" height="8" fill="#fff"/><g fill="#e53935"><rect x="40" y="76" width="26" height="8"/><rect x="92" y="76" width="26" height="8"/><rect x="144" y="76" width="26" height="8"/><rect x="196" y="76" width="26" height="8"/></g><polygon points="270,80 300,80 285,62" fill="#f08a00"/><polygon points="310,80 340,80 325,62" fill="#43a047"/><rect x="272" y="80" width="26" height="40" fill="#8a5a2b"/><rect x="312" y="80" width="26" height="40" fill="#8a5a2b"/><circle cx="285" cy="76" r="5" fill="#e53935"/><circle cx="325" cy="76" r="5" fill="#ffd54a"/>'+
+  mv(-20,430,14,'<circle cy="118" r="5" fill="#f3c9a0"/><rect x="-4" y="123" width="8" height="14" fill="#2f6fe0"/><rect x="5" y="128" width="7" height="8" fill="#e8731f"/>')+mv(420,-20,10,'<circle cy="118" r="5" fill="#f3c9a0"/><rect x="-4" y="123" width="8" height="14" fill="#8b3fc4"/><rect x="-12" y="128" width="7" height="8" fill="#43a047"/>');
+ return SV(o);
+}
+var INF=[['Giao thông','giaothong',['Trạm xe buýt: khoảng 300 m, 4 tuyến vào trung tâm','Trục đường chính: khoảng 500 m, ô tô đi hai chiều','Bến xe, ga tàu: khoảng 3 km','Cao tốc, vành đai: khoảng 5 km, vào trung tâm 30 đến 45 phút','Chỗ gửi ô tô và xe máy trong khu']],
+ ['Tiện ích','tienich',['Công viên cây xanh: 400 m, có đường chạy bộ','Hồ bơi, phòng gym: trong khu hoặc cách 1 km','Sân chơi trẻ em, ghế nghỉ chân','Khu BBQ, sinh hoạt cộng đồng','An ninh: bảo vệ và camera 24/7']],
+ ['Giáo dục và y tế','giaoduc',['Mầm non 500 m, tiểu học 800 m, THCS và THPT 1,5 km','Phòng khám đa khoa: 600 m, mở cửa đến 20:00','Bệnh viện lớn: khoảng 2,5 km, xe cấp cứu tới trong 8 phút','Nhà thuốc: 200 m','Trung tâm ngoại ngữ, kỹ năng: 1 km']],
+ ['Thương mại','thuongmai',['Siêu thị: 700 m','Chợ dân sinh: 900 m, mở từ sáng sớm','Trung tâm thương mại: 3 km','Ngân hàng, ATM: 300 m','Quán ăn, cà phê, cửa hàng tiện lợi: 100 đến 300 m']]];
+function docSvg(ok){
+ return '<svg viewBox="0 0 70 84" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="4" width="50" height="68" rx="4" fill="#fff" stroke="#9aa3b2"/><rect x="14" y="14" width="34" height="3" fill="#cfd5df"/><rect x="14" y="22" width="34" height="3" fill="#cfd5df"/><rect x="14" y="30" width="22" height="3" fill="#cfd5df"/>'+(ok?
+ '<circle cx="48" cy="58" r="16" fill="#1a9b5a"/><path d="M40 58 l6 6 l11 -12" fill="none" stroke="#fff" stroke-width="4" stroke-dasharray="30" stroke-dashoffset="30"><animate attributeName="stroke-dashoffset" values="30;0;0" keyTimes="0;.4;1" dur="2.4s" repeatCount="indefinite"/></path>':
+ '<circle cx="48" cy="58" r="16" fill="#f08a00"/><circle cx="48" cy="58" r="11" fill="none" stroke="#fff" stroke-width="2"/><line x1="48" y1="58" x2="48" y2="51" stroke="#fff" stroke-width="2.5"/><line x1="48" y1="58" x2="53" y2="58" stroke="#fff" stroke-width="2.5"><animateTransform attributeName="transform" type="rotate" from="0 48 58" to="360 48 58" dur="4s" repeatCount="indefinite"/></line>')+'</svg>';
+}
+var LG={SP005:{so:['wait','Đang làm thủ tục cấp sổ hồng riêng cho từng căn.']},SP006:{qh:['wait','Đang chờ xác nhận quy hoạch chi tiết khu vực.']}};
+function legal(id){
+ var p=db.sp.find(function(x){return x.id===id});if(!p)return;
+ var o=owner(p),g=LG[p.id]||{},d=p.loai==='Đất nền';
+ var it=[
+ [d?'Sổ đỏ':(p.loai==='Căn hộ'?'Sổ hồng căn hộ':'Sổ hồng đất và nhà'),g.so||['ok','Chính chủ, còn hiệu lực, đúng diện tích '+p.dt+' m².'],'Đối chiếu tên trên sổ với CCCD của bên bán.'],
+ ['Quy hoạch',g.qh||['ok','Thuộc khu dân cư, không vướng lộ giới hay quy hoạch treo.'],'Xin xác nhận quy hoạch tại UBND phường, xã.'],
+ [d?'Giấy phép xây dựng':'Giấy phép xây dựng và hoàn công',d?['wait','Chưa xây dựng. Khi xây nhà cần xin phép theo quy hoạch.']:['ok','Đã có giấy phép và hoàn công.'],'Kiểm tra số giấy phép và diện tích xây dựng thực tế.'],
+ ['Thế chấp',['ok','Không thế chấp ngân hàng.'],'Yêu cầu xác nhận không thế chấp tại văn phòng đăng ký đất đai.'],
+ ['Tranh chấp',['ok','Không có tranh chấp, không bị kê biên.'],'Hỏi thêm tổ dân phố và hàng xóm xung quanh.'],
+ ['Sang tên và hợp đồng',[o.s==='ok'?'ok':'wait',o.t],'Công chứng hợp đồng, nộp thuế phí, nhận sổ mới.']];
+ $('lgbox').innerHTML=it.map(function(x){var ok=x[1][0]==='ok';return '<div class="it">'+docSvg(ok)+'<div><b>'+x[0]+'</b> '+(ok?chip('Đã hoàn tất','c0'):chip('Chờ xử lý','c1'))+'<div>'+esc(x[1][1])+'</div><div class="mu">Khách nên: '+x[2]+'</div></div></div>'}).join('');
+}
+var TD={SP001:[95,['Tủ bếp trên dưới','Bếp từ, hút mùi','Điều hòa 2 chiều','Bình nóng lạnh','Sàn gỗ','Rèm và đèn trần']],
+ SP002:[90,['Cầu thang gỗ','Tủ bếp','Điều hòa các phòng','Hệ thống PCCC','Nước nóng năng lượng mặt trời','Cổng tự động']],
+ SP003:[100,['Đã san gạt mặt bằng','Đường bê tông 13 m','Điện nước kéo tới chân lô','Cọc mốc ranh giới rõ ràng']],
+ SP004:[85,['Nội thất gỗ phòng khách','Bếp đảo cao cấp','Điều hòa trung tâm','Hồ bơi khu nội bộ','Nhà thông minh','Sân vườn hoàn thiện']],
+ SP005:[92,['Tủ bếp','Điều hòa 3 phòng ngủ','Tủ quần áo âm tường','Máy lọc nước','Sàn gỗ','Khóa cửa thông minh']],
+ SP006:[60,['Đã san gạt mặt bằng','Đang làm đường nội bộ','Điện nước đang triển khai']]};
+var BUY=['Soạn hợp đồng đặt cọc và mua bán, hướng dẫn công chứng','Làm thủ tục sang tên, hỗ trợ kê khai thuế phí','Kết nối ngân hàng đối tác tư vấn vay, chuẩn bị hồ sơ vay','Hẹn lịch xem nhà, đưa đón theo lịch hẹn','Bàn giao đúng hiện trạng đã cam kết, có biên bản','Bảo hành kết cấu và hoàn thiện theo hợp đồng','Tư vấn nội thất, giá thuê và hỗ trợ bán lại'];
+var RIGHT=['Xem đầy đủ hồ sơ pháp lý trước khi đặt cọc','Đứng tên sổ sau khi thanh toán đủ và hoàn tất thủ tục','Nhận bàn giao đúng diện tích, nội thất như hợp đồng','Yêu cầu bảo hành, sửa lỗi trong thời hạn bảo hành','Chuyển nhượng, cho thuê, thế chấp sau khi có sổ','Được hoàn cọc nếu bên bán vi phạm cam kết (theo hợp đồng)','Được bảo mật thông tin cá nhân'];
+delete PAGES.vitri;
+PAGES.hatang={t:'Hạ tầng',d:'Hình minh họa động về giao thông, tiện ích, giáo dục, y tế và thương mại quanh sản phẩm.',x:function(){return '<div class="ic">'+INF.map(function(a){return '<div>'+infraArt(a[1])+'<div class="cx"><b>'+a[0]+'</b><ul class="l">'+a[2].map(li).join('')+'</ul></div></div>'}).join('')+'</div><p class="mu">Khoảng cách và thời gian là số liệu minh họa, sẽ cập nhật theo từng dự án.</p>'}};
+PAGES.phaply={t:'Pháp lý',d:'Chọn một sản phẩm để xem tình trạng từng loại giấy tờ. Dữ liệu mẫu, thay bằng hồ sơ thật khi vận hành.',
+ x:function(){return '<label>Chọn sản phẩm</label><select id="lgsel" onchange="legal(this.value)" style="margin-bottom:12px">'+db.sp.map(function(p){return '<option value="'+p.id+'">'+esc(p.id+' - '+p.ten)+'</option>'}).join('')+'</select><div class="lg" id="lgbox"></div>'},
+ a:function(){if(db.sp.length)legal(db.sp[0].id)}};
+PAGES.matbang={t:'Mặt bằng',d:'Từng sản phẩm có tên, giá, diện tích và sơ đồ bố trí bên trong.',
+ x:function(){return '<div class="ic">'+db.sp.map(function(p){return '<div><span class="pl" style="display:block">'+plan(p)+'</span><div class="cx"><b>'+esc(p.ten)+'</b><div class="chs">'+chip(p.loai,LV[p.loai])+chip(p.tt,TV[p.tt])+'</div><div class="mu">'+p.dt+' m² · '+esc(p.dc)+'</div><div class="pr">'+gia(p.gia)+'</div><button onclick="openP(\''+p.id+'\')" style="margin-top:6px">Xem chi tiết</button></div></div>'}).join('')+'</div>'}};
+PAGES.gia={t:'Giá và chính sách',d:'Bên bán hỗ trợ gì, người mua có quyền gì, và bảng giá cập nhật trực tiếp. Nội dung mẫu, điều khoản chính thức theo hợp đồng.',
+ x:function(){return '<div class="g2"><div class="u"><b>🤝 Bên bán hỗ trợ</b><ul class="l">'+BUY.map(li).join('')+'</ul></div><div class="bl"><b>🛡️ Quyền của người mua</b><ul class="l">'+RIGHT.map(li).join('')+'</ul></div></div><h2>Bảng giá</h2><div class="tw pt"><table><tr><th>Sản phẩm</th><th>Loại</th><th>Diện tích</th><th>Giá</th><th>Giá/m²</th><th>Trạng thái</th><th></th></tr>'+db.sp.map(function(p){
+  return '<tr><td><b>'+esc(p.ten)+'</b><div class="mu">'+esc(p.dc)+'</div></td><td>'+chip(p.loai,LV[p.loai])+'</td><td>'+p.dt+' m²</td><td class="p">'+gia(p.gia)+'</td><td>'+(p.dt?Math.round(p.gia/p.dt/1e6)+' triệu':'-')+'</td><td>'+chip(p.tt,TV[p.tt])+'</td><td><button class="pri" onclick="openP(\''+p.id+'\')">Xem</button></td></tr>'}).join('')+'</table></div>'}};
+PAGES.tiendo={t:'Tiến độ từng dự án',d:'Mỗi sản phẩm có tiến độ, nội thất đã có, và với đất nền là tình trạng sang tên.',
+ x:function(){return '<div class="ic">'+db.sp.map(function(p){
+  var t=TD[p.id]||[50,['Đang cập nhật']],pct=t[0],d=p.loai==='Đất nền',o=owner(p),st=d?['Pháp lý','San nền','Hạ tầng','Sang tên']:['Pháp lý','Xây dựng','Nội thất','Bàn giao'],ix=pct>=100?4:Math.floor(pct/25);
+  if(d&&o.s!=='ok')ix=Math.min(ix,3);
+  return '<div><div class="img">'+art(p.loai,false)+'</div><div class="cx"><b>'+esc(p.ten)+'</b><div class="chs">'+chip(p.loai,LV[p.loai])+chip(p.tt,TV[p.tt])+'</div><div class="mu">Hoàn thiện '+pct+'%</div><div class="bar"><i style="width:'+pct+'%"></i></div><div class="tl">'+st.map(function(s,i){return '<span class="'+(i<ix?'d':i===ix?'n':'')+'">'+s+'</span>'}).join('')+'</div><b>'+(d?'Hiện trạng đất':'Nội thất đã có')+'</b><div class="chs">'+t[1].map(function(x){return chip(x,'l0')}).join('')+'</div>'+(d?'<p class="'+(o.s==='ok'?'st-ok':'st-wait')+'"><b>Sang tên:</b> '+esc(o.t)+'</p>':'')+'</div></div>'}).join('')+'</div>'}};
+PAGES.faq={t:'Câu hỏi thường gặp',d:'Công ty hỗ trợ gì khi bạn mua. Nội dung mẫu, điều khoản chính thức theo hợp đồng.',
+ x:function(){return [['Công ty hỗ trợ gì trước khi tôi quyết định mua?','Tư vấn miễn phí, hẹn lịch xem nhà thực tế, cung cấp hồ sơ pháp lý để bạn đối chiếu và giải thích rõ ưu nhược điểm từng sản phẩm.'],
+ ['Đặt cọc như thế nào?','Điền form đăng ký, hệ thống lập hóa đơn đặt cọc 10% giá trị. Chuyên viên liên hệ hướng dẫn thanh toán và ký biên nhận. Sản phẩm được giữ cho bạn sau khi nhận cọc.'],
+ ['Công ty hỗ trợ thủ tục pháp lý ra sao?','Soạn hợp đồng đặt cọc và mua bán, hướng dẫn công chứng, hỗ trợ kê khai thuế phí và nộp hồ sơ sang tên.'],
+ ['Tôi có được hỗ trợ vay ngân hàng không?','Có. Công ty kết nối ngân hàng đối tác để tư vấn hạn mức, lãi suất và chuẩn bị hồ sơ. Quyết định cho vay thuộc về ngân hàng.'],
+ ['Khi nào tôi được bàn giao?','Sau khi thanh toán theo tiến độ trong hợp đồng. Hai bên kiểm tra hiện trạng, nội thất và lập biên bản bàn giao.'],
+ ['Sau khi mua, nếu phát sinh lỗi thì sao?','Bạn được bảo hành theo thời hạn ghi trong hợp đồng. Công ty tiếp nhận yêu cầu, cử nhân viên kỹ thuật kiểm tra và sửa chữa.'],
+ ['Tôi có thể hủy cọc không?','Điều kiện hủy và hoàn cọc ghi rõ trong hợp đồng. Nếu bên bán vi phạm cam kết, bạn được hoàn cọc theo hợp đồng.'],
+ ['Công ty có hỗ trợ cho thuê hoặc bán lại không?','Có. Công ty tư vấn giá thuê, giới thiệu khách thuê và hỗ trợ đăng bán lại khi bạn cần.'],
+ ['Thông tin của tôi được dùng để làm gì?','Chỉ dùng để tư vấn và thực hiện giao dịch với VMH homes, không chia sẻ cho bên thứ ba khi chưa được đồng ý.']
+ ].map(function(q){return '<details><summary>'+q[0]+'</summary><p class="mu">'+q[1]+'</p></details>'}).join('')}};
+function showPage(k){
+ var p=PAGES[k];
+ $('page').innerHTML='<section class="phd"><div class="w"><div style="color:#cfd6e4;font-size:13px">Trang chủ / '+p.t+'</div><h1>'+p.t+'</h1><p>'+p.d+'</p></div></section><div class="w sec">'+
+  (p.c?'<div class="about">'+p.c.map(function(c){return '<div><b>'+c[0]+'</b><p class="mu">'+c[1]+'</p></div>'}).join('')+'</div>':'')+(p.x?p.x():'')+'</div><div class="w sec">'+cta(k)+'</div>';
+ if(p.a)p.a();
+}
+var ME=null,fails=0,lock=0,clicks=0,ct;
+if(!db.us||!db.us.length){db.us=[{u:'giamdoc',h:'e7c4ddc1c360b223d81c70f33c6f9fede1dc53381af1629010aa06d5a470d12d',role:'gd',perm:['sp','kh','hd']}];save()}
+function sha(t){return crypto.subtle.digest('SHA-256',new TextEncoder().encode('vmh|'+t)).then(function(d){return Array.prototype.map.call(new Uint8Array(d),function(x){return ('0'+x.toString(16)).slice(-2)}).join('')})}
+function can(k){return !!ME&&(ME.role==='gd'||ME.perm.indexOf(k)>=0)}
+function secret(){clicks++;clearTimeout(ct);ct=setTimeout(function(){clicks=0},2500);if(clicks>=5){clicks=0;go('admin')}}
+function go(v){
+ var pg=PAGES[v];
+ if(v!=='admin')ME=null;
+ $('home').style.display=(v==='home'||v==='list')?'':'none';
+ $('page').style.display=pg?'':'none';
+ $('admin').style.display=v==='admin'?'':'none';
+ if(v==='admin')showAdmin();
+ if(pg)showPage(v);
+ if(v==='list')$('list').scrollIntoView();else window.scrollTo(0,0);
+}
+function login(){
+ if(Date.now()<lock){$('am').textContent='Sai quá nhiều lần, thử lại sau 30 giây.';return}
+ sha($('ap').value).then(function(h){
+  var u=db.us.find(function(x){return x.u===$('au').value.trim().toLowerCase()&&x.h===h});
+  if(u){ME=u;fails=0;$('ap').value='';showAdmin()}
+  else{fails++;if(fails>=5){lock=Date.now()+30000;fails=0}$('am').textContent='Sai tài khoản hoặc mật khẩu.'}});
+}
+function logout(){ME=null;go('home')}
+function showAdmin(){
+ $('lgn').style.display=ME?'none':'';$('adm').style.display=ME?'':'none';
+ if(!ME)return;
+ $('who').textContent=ME.u+' ('+(ME.role==='gd'?'Giám đốc':'Nhân viên')+')';
+ ['sp','kh','hd'].forEach(function(k){$('a_'+k).style.display=can(k)?'':'none'});
+ $('a_us').style.display=ME.role==='gd'?'':'none';
+ draw();drawUsers();
+}
+var PN={sp:'Sản phẩm',kh:'Khách hàng',hd:'Hóa đơn'};
+function drawUsers(){
+ $('tu').innerHTML='<tr><th>Tài khoản</th><th>Vai trò</th><th>Quyền</th><th></th></tr>'+db.us.map(function(u){
+  return '<tr><td>'+esc(u.u)+'</td><td>'+(u.role==='gd'?'Giám đốc':'Nhân viên')+'</td><td>'+(u.role==='gd'?'Toàn quyền':Object.keys(PN).map(function(k){return '<label style="display:inline;margin-right:8px"><input type="checkbox" style="width:auto" '+(u.perm.indexOf(k)>=0?'checked ':'')+'onchange="setPerm(\''+u.u+'\',\''+k+'\',this.checked)"> '+PN[k]+'</label>'}).join(''))+'</td><td>'+(u.role==='gd'?'':'<button onclick="delU(\''+u.u+'\')">Xóa</button>')+'</td></tr>'}).join('');
+}
+function setPerm(u,k,on){if(!can('us'))return;var x=db.us.find(function(y){return y.u===u});x.perm=x.perm.filter(function(p){return p!==k});if(on)x.perm.push(k);save()}
+function delU(u){if(ME.role!=='gd'||!confirm('Xóa tài khoản '+u+'?'))return;db.us=db.us.filter(function(x){return x.u!==u||x.role==='gd'});save();drawUsers()}
+function addU(){
+ if(ME.role!=='gd')return;
+ var u=$('nu').value.trim().toLowerCase(),pw=$('npw').value;
+ if(!/^[a-z0-9._]{3,}$/.test(u)||pw.length<6){alert('Tài khoản từ 3 ký tự (chữ thường, số), mật khẩu từ 6 ký tự.');return}
+ if(db.us.some(function(x){return x.u===u})){alert('Tài khoản đã tồn tại.');return}
+ var perm=[].slice.call(document.querySelectorAll('.np:checked')).map(function(c){return c.value});
+ sha(pw).then(function(h){db.us.push({u:u,h:h,role:'nv',perm:perm});save();$('nu').value='';$('npw').value='';drawUsers()});
+}
+function chpw(){var pw=$('np').value;if(pw.length<6){alert('Mật khẩu từ 6 ký tự.');return}sha(pw).then(function(h){ME.h=h;save();$('np').value='';alert('Đã đổi mật khẩu.')})}
+function resetDb(){if(ME.role!=='gd'||!confirm('Nạp lại dữ liệu mẫu? Tài khoản được giữ nguyên.'))return;var us=db.us;db=seed();db.us=us;save();draw()}
+[['setTT','sp'],['delP','sp'],['addP','sp'],['pay','hd']].forEach(function(a){var f=window[a[0]];window[a[0]]=function(){if(!can(a[1])){alert('Bạn không có quyền thực hiện thao tác này.');return}return f.apply(null,arguments)}});
+if(location.hash==='#quan-tri')go('admin');
+</script>
+</body>
+</html>
