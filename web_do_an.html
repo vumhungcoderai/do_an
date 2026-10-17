@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate - Bất Động Sản</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, sans-serif;
+        }
+
+        body{
+            background:#f4f4f4;
+        }
+
+        header{
+            background:#0d6efd;
+            color:white;
+            padding:20px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+
+        .logo{
+            font-size:28px;
+            font-weight:bold;
+        }
+
+        nav ul{
+            list-style:none;
+            display:flex;
+        }
+
+        nav ul li{
+            margin-left:20px;
+        }
+
+        nav ul li a{
+            color:white;
+            text-decoration:none;
+            font-weight:bold;
+        }
+
+        .banner{
+            background:url('https://images.unsplash.com/photo-1560518883-ce09059eeffa')
+            center/cover;
+            height:500px;
+            color:white;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            flex-direction:column;
+            text-align:center;
+        }
+
+        .banner h1{
+            font-size:50px;
+            margin-bottom:15px;
+        }
+
+        .banner p{
+            font-size:20px;
+        }
+
+        .btn{
+            margin-top:20px;
+            background:#ffc107;
+            color:black;
+            padding:12px 25px;
+            text-decoration:none;
+            border-radius:5px;
+            font-weight:bold;
+        }
+
+        section{
+            padding:50px 10%;
+        }
+
+        .title{
+            text-align:center;
+            margin-bottom:40px;
+            color:#0d6efd;
+        }
+
+        .property-container{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+            gap:25px;
+        }
+
+        .property{
+            background:white;
+            border-radius:10px;
+            overflow:hidden;
+            box-shadow:0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .property img{
+            width:100%;
+            height:220px;
+            object-fit:cover;
+        }
+
+        .property-content{
+            padding:15px;
+        }
+
+        .property-content h3{
+            margin-bottom:10px;
+        }
+
+        .price{
+            color:red;
+            font-weight:bold;
+            font-size:20px;
+        }
+
+        .service{
+            display:flex;
+            justify-content:space-around;
+            flex-wrap:wrap;
+        }
+
+        .service-box{
+            background:white;
+            width:300px;
+            margin:10px;
+            padding:20px;
+            text-align:center;
+            border-radius:10px;
+            box-shadow:0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .contact{
+            background:#0d6efd;
+            color:white;
+            text-align:center;
+        }
+
+        .contact p{
+            margin:10px 0;
+        }
+
+        footer{
+            background:#222;
+            color:white;
+            text-align:center;
+            padding:15px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">REAL ESTATE</div>
+
+    <nav>
+        <ul>
+            <li><a href="#trang-chu" onclick="return RE.go('home')">Trang Chủ</a></li>
+            <li><a href="#bat-dong-san" onclick="return RE.go('list')">Bất Động Sản</a></li>
+            <li><a href="#du-an" onclick="return RE.go('projects')">Dự Án</a></li>
+            <li><a href="#dich-vu" onclick="return RE.go('services')">Dịch Vụ</a></li>
+            <li><a href="#lien-he" onclick="return RE.go('contact')">Liên Hệ</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="banner" id="trang-chu">
+    <h1>Tìm Ngôi Nhà Mơ Ước</h1>
+    <p>Hàng nghìn bất động sản chất lượng trên toàn quốc</p>
+    <a href="#bat-dong-san" class="btn" onclick="return RE.go('list')">Xem Ngay</a>
+</div>
+
+<section id="bat-dong-san">
+    <h2 class="title">BẤT ĐỘNG SẢN NỔI BẬT</h2>
+
+    <div class="property-container">
+
+        <div class="property">
+            <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be">
+            <div class="property-content">
+                <h3>Biệt Thự Cao Cấp</h3>
+                <p>Hà Nội</p>
+                <p class="price">15 Tỷ VNĐ</p>
+            </div>
+        </div>
+
+        <div class="property">
+            <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994">
+            <div class="property-content">
+                <h3>Nhà Phố Hiện Đại</h3>
+                <p>TP Hồ Chí Minh</p>
+                <p class="price">8 Tỷ VNĐ</p>
+            </div>
+        </div>
+
+        <div class="property">
+            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750">
+            <div class="property-content">
+                <h3>Chung Cư Cao Cấp</h3>
+                <p>Đà Nẵng</p>
+                <p class="price">3.5 Tỷ VNĐ</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section id="dich-vu">
+    <h2 class="title">DỊCH VỤ CỦA CHÚNG TÔI</h2>
+
+    <div class="service">
+
+        <div class="service-box">
+            <h3>Mua Nhà</h3>
+            <p>Tìm kiếm và lựa chọn bất động sản phù hợp.</p>
+        </div>
+
+        <div class="service-box">
+            <h3>Bán Nhà</h3>
+            <p>Hỗ trợ đăng tin và tiếp cận khách hàng.</p>
+        </div>
+
+        <div class="service-box">
+            <h3>Tư Vấn Đầu Tư</h3>
+            <p>Đánh giá tiềm năng sinh lời của dự án.</p>
+        </div>
+
+    </div>
+</section>
+
+<section class="contact" id="lien-he">
+    <h2>LIÊN HỆ</h2>
+
+    <p>📍 Địa chỉ: Hà Nội, Việt Nam</p>
+    <p>📞 Hotline: 0374691117</p>
+    <p>📧 Email: VMHBDSVN@gmail.com</p>
+</section>
+
+<footer id="chan-trang">
+    <p><span id="admin-trigger" title="Khu vực quản trị" onclick="RE.secret()">©</span> 2026 Website Bán Bất Động Sản | Thiết kế bằng HTML & CSS</p>
+</footer>
+
+
+<style id="functionality-styles">
+/* Add-on functionality styles. Original layout, colours, content and image URLs remain intact. */
+#re-search-launch{position:fixed;right:18px;bottom:18px;z-index:900;border:0;border-radius:50px;padding:13px 18px;background:#0d6efd;color:#fff;font-weight:bold;box-shadow:0 4px 16px #0003;cursor:pointer}
+#re-layer,#re-admin-layer{display:none;position:fixed;inset:0;z-index:2000;background:#0009;overflow:auto;padding:24px 12px}
+.re-panel{max-width:780px;margin:3vh auto;background:#fff;color:#222;border-radius:12px;padding:22px;box-shadow:0 15px 50px #0004;max-height:90vh;overflow:auto;font-family:Arial,sans-serif}
+.re-panel h2{color:#0d6efd;margin:0 0 14px}.re-close{float:right;border:0;background:#eee;border-radius:6px;padding:7px 11px;cursor:pointer}
+.re-form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.re-panel input,.re-panel select,.re-panel textarea{width:100%;padding:10px;border:1px solid #ccd2da;border-radius:6px;font:inherit;margin:4px 0 10px}.re-action{background:#0d6efd;color:#fff;border:0;border-radius:6px;padding:10px 14px;cursor:pointer;font-weight:bold;margin:4px 4px 4px 0}.re-muted{color:#666;font-size:14px}.re-result{border:1px solid #ddd;border-radius:8px;padding:12px;margin:8px 0}.re-table{width:100%;border-collapse:collapse;font-size:14px}.re-table th,.re-table td{border:1px solid #ddd;padding:8px;text-align:left;vertical-align:top}.re-table th{background:#f1f5fb}.re-status{font-weight:bold;color:#0b7a38}.re-alert{padding:10px;background:#eef7ff;border-radius:6px;margin:10px 0}.re-panel label{display:block;font-weight:bold;font-size:14px}.re-small{font-size:12px;color:#666}
+@media(max-width:600px){.re-form-grid{grid-template-columns:1fr}.re-panel{padding:15px;margin:0 auto}#re-search-launch{right:10px;bottom:10px}}
+</style>
+<button id="re-search-launch" type="button" onclick="RE.openSearch()">⌕ Tìm nhà</button>
+<div id="re-layer" role="dialog" aria-modal="true" aria-label="Chức năng bất động sản" onclick="if(event.target===this)RE.close()"><div class="re-panel"><button class="re-close" onclick="RE.close()">Đóng ✕</button><div id="re-content"></div></div></div>
+<div id="re-admin-layer" role="dialog" aria-modal="true" aria-label="Quản trị website" onclick="if(event.target===this)RE.adminClose()"><div class="re-panel"><button class="re-close" onclick="RE.adminClose()">Đóng ✕</button><div id="re-admin-content"></div></div></div>
+<script>
+(function(){
+'use strict';
+const $=id=>document.getElementById(id);
+const KEY='real_estate_original_function_data_v1';
+const base=[
+ {id:'SP001',name:'Biệt Thự Cao Cấp',city:'Hà Nội',type:'Biệt thự',price:15000000000,area:180,status:'Đang bán',desc:'Biệt thự cao cấp tại Hà Nội. Vui lòng liên hệ để nhận thông tin chi tiết và lịch xem nhà.',img:'https://images.unsplash.com/photo-1570129477492-45c003edd2be'},
+ {id:'SP002',name:'Nhà Phố Hiện Đại',city:'TP Hồ Chí Minh',type:'Nhà phố',price:8000000000,area:120,status:'Đang bán',desc:'Nhà phố hiện đại tại TP Hồ Chí Minh. Vui lòng liên hệ để nhận thông tin chi tiết và lịch xem nhà.',img:'https://images.unsplash.com/photo-1568605114967-8130f3a36994'},
+ {id:'SP003',name:'Chung Cư Cao Cấp',city:'Đà Nẵng',type:'Căn hộ',price:3500000000,area:75,status:'Đang bán',desc:'Chung cư cao cấp tại Đà Nẵng. Vui lòng liên hệ để nhận thông tin chi tiết và lịch xem nhà.',img:'https://images.unsplash.com/photo-1512917774080-9991f1c4c750'}
+];
+let data;try{data=JSON.parse(localStorage.getItem(KEY)||'null')}catch(e){};
+if(!data||!Array.isArray(data.properties))data={properties:base.map(x=>({...x})),leads:[],orders:[]};
+function save(){try{localStorage.setItem(KEY,JSON.stringify(data))}catch(e){}}
+function esc(v){return String(v==null?'':v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function money(n){return Number(n||0).toLocaleString('vi-VN')+' VNĐ'}
+function show(html){$('re-content').innerHTML=html;$('re-layer').style.display='block';document.body.style.overflow='hidden'}
+function close(){$('re-layer').style.display='none';document.body.style.overflow=''}
+function adminShow(html){$('re-admin-content').innerHTML=html;$('re-admin-layer').style.display='block';document.body.style.overflow='hidden'}
+function adminClose(){$('re-admin-layer').style.display='none';document.body.style.overflow=''}
+function go(where){close();let id=where==='home'?'trang-chu':where==='list'?'bat-dong-san':where==='services'?'dich-vu':where==='contact'?'lien-he':'bat-dong-san';if(where==='projects'){show('<h2>Dự án</h2><p class="re-muted">Danh sách dự án hiện được quản lý từ các bất động sản nổi bật.</p>'+cards(data.properties)+'<button class="re-action" onclick="RE.openSearch()">Tìm kiếm và lọc</button>');return false}document.getElementById(id)?.scrollIntoView({behavior:'smooth'});return false}
+function cards(arr){return arr.length?arr.map(p=>'<div class="re-result"><b>'+esc(p.name)+'</b><div>'+esc(p.city)+' · '+esc(p.type||'Bất động sản')+' · '+Number(p.area||0)+' m²</div><div style="color:#d00;font-weight:bold">'+money(p.price)+'</div><div class="re-muted">'+esc(p.status)+'</div><button class="re-action" data-id="'+esc(p.id)+'" onclick="RE.detail(this.dataset.id)">Xem chi tiết / đăng ký</button></div>').join(''):'<p>Không tìm thấy bất động sản phù hợp.</p>'}
+function openSearch(){show('<h2>Tìm kiếm bất động sản</h2><p class="re-muted">Tìm theo tên, khu vực, loại nhà và mức giá. Các ảnh và bố cục gốc của website được giữ nguyên.</p><div class="re-form-grid"><div><label>Tên hoặc khu vực</label><input id="rs-q" placeholder="Ví dụ: Hà Nội, biệt thự"></div><div><label>Loại bất động sản</label><select id="rs-type"><option value="">Tất cả loại</option><option>Biệt thự</option><option>Nhà phố</option><option>Căn hộ</option><option>Đất nền</option></select></div><div><label>Giá thấp nhất (VNĐ)</label><input id="rs-min" type="number" min="0" placeholder="0"></div><div><label>Giá cao nhất (VNĐ)</label><input id="rs-max" type="number" min="0" placeholder="Không giới hạn"></div></div><button class="re-action" onclick="RE.search()">Tìm kiếm</button><button class="re-action" style="background:#555" onclick="RE.resetSearch()">Xóa bộ lọc</button><div style="margin:10px 0"><b>Thông tin hỗ trợ:</b> <button class="re-action" onclick="RE.info(&quot;legal&quot;)">Pháp lý</button><button class="re-action" onclick="RE.info(&quot;infra&quot;)">Hạ tầng</button><button class="re-action" onclick="RE.info(&quot;plan&quot;)">Mặt bằng</button><button class="re-action" onclick="RE.info(&quot;price&quot;)">Giá & chính sách</button><button class="re-action" onclick="RE.info(&quot;progress&quot;)">Tiến độ</button><button class="re-action" onclick="RE.info(&quot;faq&quot;)">FAQ</button></div><div id="rs-results">'+cards(data.properties)+'</div>')}
+function search(){let q=($('rs-q')?.value||'').toLowerCase().trim(),t=$('rs-type')?.value||'',min=Number($('rs-min')?.value||0),max=Number($('rs-max')?.value||Infinity);let arr=data.properties.filter(p=>(!q||(p.name+' '+p.city+' '+p.desc).toLowerCase().includes(q))&&(!t||p.type===t)&&p.price>=min&&p.price<=max);$('rs-results').innerHTML=cards(arr)}
+function resetSearch(){['rs-q','rs-min','rs-max'].forEach(id=>{if($(id))$(id).value=''});if($('rs-type'))$('rs-type').value='';$('rs-results').innerHTML=cards(data.properties)}
+function detail(id){let p=data.properties.find(x=>x.id===id);if(!p)return;show('<h2>'+esc(p.name)+'</h2><img src="'+esc(p.img)+'" alt="'+esc(p.name)+'" style="width:100%;max-height:280px;object-fit:cover;border-radius:8px"><p style="margin-top:12px">'+esc(p.desc)+'</p><p><b>Khu vực:</b> '+esc(p.city)+' · <b>Loại:</b> '+esc(p.type)+' · <b>Diện tích:</b> '+esc(p.area)+' m²</p><p style="font-size:21px;color:#d00;font-weight:bold">'+money(p.price)+'</p><p><b>Trạng thái:</b> '+esc(p.status)+'</p>'+(p.status==='Đang bán'?'<h3>Đăng ký tư vấn / đặt cọc</h3><div class="re-form-grid"><div><label>Họ tên *</label><input id="rb-name" placeholder="Họ tên"></div><div><label>Số điện thoại *</label><input id="rb-phone" inputmode="numeric" placeholder="0xxxxxxxxx"></div><div><label>Email</label><input id="rb-email" type="email" placeholder="Email (không bắt buộc)"></div><div><label>Nhu cầu</label><select id="rb-need"><option>Đăng ký tư vấn</option><option>Đặt lịch xem nhà</option><option>Quan tâm đặt cọc 10%</option></select></div></div><p class="re-muted">Nếu chọn quan tâm đặt cọc, website chỉ ghi nhận yêu cầu; không thực hiện giao dịch hoặc thanh toán thật.</p><button class="re-action" data-id="'+esc(p.id)+'" onclick="RE.submitLead(this.dataset.id)">Gửi đăng ký</button><div id="rb-msg"></div>':'<div class="re-alert">Bất động sản này hiện không mở bán.</div>')+'<button class="re-action" style="background:#555" onclick="RE.openSearch()">Quay lại danh sách</button>')}
+function submitLead(id){let name=$('rb-name')?.value.trim(),phone=$('rb-phone')?.value.trim();if(!name||!/^0\d{9}$/.test(phone)){alert('Nhập họ tên và số điện thoại gồm 10 số, bắt đầu bằng 0.');return}let p=data.properties.find(x=>x.id===id);let lead={id:'KH'+String(data.leads.length+1).padStart(3,'0'),name,phone,email:$('rb-email').value.trim(),need:$('rb-need').value,propertyId:id,date:new Date().toISOString().slice(0,10)};data.leads.push(lead);if($('rb-msg'))$('rb-msg').innerHTML='<div class="re-alert">Đã ghi nhận đăng ký của '+esc(name)+'. Đây là dữ liệu lưu trên trình duyệt này; nhân viên chưa được thông báo tự động.</div>';save()}
+function service(kind){const content={buy:['Mua nhà','Tìm kiếm theo khu vực, loại hình và ngân sách; mở từng bất động sản để xem thông tin và gửi yêu cầu tư vấn.'],sell:['Bán nhà','Gửi yêu cầu tư vấn bán bất động sản. Nhân viên cần xác minh hồ sơ và thông tin thực tế trước khi đăng tin.'],invest:['Tư vấn đầu tư','Có thể gửi yêu cầu tư vấn để trao đổi về vị trí, giá, pháp lý và thanh khoản. Nội dung website không thay thế thẩm định độc lập.']}[kind];show('<h2>'+content[0]+'</h2><p>'+content[1]+'</p><div class="re-form-grid"><div><label>Họ tên</label><input id="svc-name"></div><div><label>Số điện thoại</label><input id="svc-phone" inputmode="numeric"></div><div><label>Email</label><input id="svc-email" type="email"></div><div><label>Nội dung</label><input id="svc-note" placeholder="Nhu cầu của bạn"></div></div><button class="re-action" data-kind="'+kind+'" onclick="RE.serviceSubmit(this.dataset.kind)">Gửi yêu cầu</button><div id="svc-msg"></div>')}
+function serviceSubmit(kind){let name=$('svc-name').value.trim(),phone=$('svc-phone').value.trim();if(!name||!/^0\d{9}$/.test(phone)){alert('Nhập họ tên và số điện thoại hợp lệ (10 số, bắt đầu bằng 0).');return}data.leads.push({id:'KH'+String(data.leads.length+1).padStart(3,'0'),name,phone,email:$('svc-email').value.trim(),need:({buy:'Mua nhà',sell:'Bán nhà',invest:'Tư vấn đầu tư'})[kind]+': '+$('svc-note').value.trim(),propertyId:'',date:new Date().toISOString().slice(0,10)});save();$('svc-msg').innerHTML='<div class="re-alert">Đã lưu yêu cầu trên trình duyệt này.</div>'}
+function info(kind){let map={legal:['Pháp lý','Trước khi giao dịch, cần kiểm tra giấy chứng nhận, chủ thể sở hữu, quy hoạch, tranh chấp, nghĩa vụ tài chính và nội dung hợp đồng. Website hiện chưa kết nối hồ sơ pháp lý thực tế.'],infra:['Hạ tầng','Thông tin đường giao thông, trường học, y tế, tiện ích cần được xác minh theo địa chỉ thực tế. Website hiện chưa tích hợp bản đồ hoặc dữ liệu khoảng cách trực tuyến.'],plan:['Mặt bằng','Diện tích và mô tả hiện là dữ liệu minh họa. Hãy yêu cầu bản vẽ và diện tích thông thủy/diện tích đất được xác nhận trước khi giao dịch.'],price:['Giá và chính sách','Giá hiển thị là thông tin mẫu của website. Phí, thuế, lịch thanh toán và điều khoản đặt cọc phải được xác nhận bằng văn bản với bên bán.'],progress:['Tiến độ','Tiến độ dự án phải được xác nhận qua chủ đầu tư hoặc hồ sơ cập nhật chính thức. Website chưa có kết nối dữ liệu tiến độ tự động.'],faq:['Câu hỏi thường gặp','• Làm sao xem nhà? Mở chi tiết sản phẩm và gửi đăng ký.\n• Đăng ký có phải thanh toán không? Không. Website chỉ ghi nhận yêu cầu.\n• Dữ liệu được gửi cho ai? Hiện lưu trên trình duyệt này, chưa gửi tới máy chủ.']}[kind];show('<h2>'+map[0]+'</h2><div style="white-space:pre-line;line-height:1.8">'+esc(map[1])+'</div><button class="re-action" onclick="RE.openSearch()">Xem bất động sản</button>')}
+let secretClicks=0,secretTimer;
+function secret(){secretClicks++;clearTimeout(secretTimer);secretTimer=setTimeout(()=>secretClicks=0,2500);if(secretClicks>=5){secretClicks=0;adminLogin()}}
+function adminLogin(){adminShow('<h2>Quản trị nội bộ</h2><p class="re-muted">Bản demo chạy hoàn toàn trên trình duyệt. Mật khẩu mẫu: <b>vmh2026</b>. Không dùng cơ chế này cho website thật.</p><label>Mật khẩu quản trị</label><input id="ra-pass" type="password" placeholder="Nhập mật khẩu"><button class="re-action" onclick="RE.adminEnter()">Đăng nhập</button><div id="ra-msg"></div>')}
+function adminEnter(){if($('ra-pass').value!=='vmh2026'){$('ra-msg').textContent='Mật khẩu không đúng.';return}adminDashboard()}
+function adminDashboard(){adminShow('<h2>Quản trị website</h2><p class="re-muted">Các thay đổi chỉ được lưu trong localStorage của trình duyệt hiện tại.</p><h3>Thêm bất động sản</h3><div class="re-form-grid"><div><label>Tên</label><input id="ra-name"></div><div><label>Khu vực</label><input id="ra-city"></div><div><label>Loại</label><select id="ra-type"><option>Biệt thự</option><option>Nhà phố</option><option>Căn hộ</option><option>Đất nền</option></select></div><div><label>Giá (VNĐ)</label><input id="ra-price" type="number" min="1"></div><div><label>Diện tích (m²)</label><input id="ra-area" type="number" min="1"></div><div><label>URL ảnh</label><input id="ra-img" placeholder="https://..."></div></div><label>Mô tả</label><textarea id="ra-desc" rows="2"></textarea><button class="re-action" onclick="RE.adminAdd()">Thêm sản phẩm</button><h3>Danh sách bất động sản</h3><div style="overflow:auto"><table class="re-table"><thead><tr><th>Mã</th><th>Tên</th><th>Giá</th><th>Trạng thái</th><th>Thao tác</th></tr></thead><tbody>'+data.properties.map(p=>'<tr><td>'+esc(p.id)+'</td><td>'+esc(p.name)+'</td><td>'+money(p.price)+'</td><td>'+esc(p.status)+'</td><td><button class="re-action" data-id="'+esc(p.id)+'" onclick="RE.adminStatus(this.dataset.id)">Đổi trạng thái</button> <button class="re-action" style="background:#b42318" data-id="'+esc(p.id)+'" onclick="RE.adminDelete(this.dataset.id)">Xóa</button></td></tr>').join('')+'</tbody></table></div><h3>Khách hàng / yêu cầu ('+data.leads.length+')</h3><div style="overflow:auto"><table class="re-table"><thead><tr><th>Mã</th><th>Khách</th><th>Liên hệ</th><th>Nhu cầu</th><th>Ngày</th></tr></thead><tbody>'+data.leads.map(l=>'<tr><td>'+esc(l.id)+'</td><td>'+esc(l.name)+'</td><td>'+esc(l.phone)+'<br>'+esc(l.email)+'</td><td>'+esc(l.need)+'</td><td>'+esc(l.date)+'</td></tr>').join('')+'</tbody></table></div><h3>Yêu cầu đặt cọc / hóa đơn</h3><p class="re-muted">Bản demo ghi nhận yêu cầu trong danh sách khách hàng, không thu tiền và không tạo hóa đơn thanh toán thật.</p><button class="re-action" style="background:#555" onclick="RE.adminClose()">Đóng quản trị</button>')}
+function adminAdd(){let name=$('ra-name').value.trim(),city=$('ra-city').value.trim(),price=Number($('ra-price').value),area=Number($('ra-area').value);if(!name||!city||price<=0||area<=0){alert('Điền tên, khu vực, giá và diện tích hợp lệ.');return}let id='SP'+String(Date.now()).slice(-6);data.properties.push({id,name,city,type:$('ra-type').value,price,area,status:'Đang bán',desc:$('ra-desc').value.trim(),img:$('ra-img').value.trim()||'https://images.unsplash.com/photo-1560518883-ce09059eeffa'});save();adminDashboard()}
+function adminStatus(id){let p=data.properties.find(p=>p.id===id);if(!p)return;p.status=p.status==='Đang bán'?'Đã bán':'Đang bán';save();adminDashboard()}
+function adminDelete(id){if(!confirm('Xóa bất động sản này?'))return;data.properties=data.properties.filter(p=>p.id!==id);save();adminDashboard()}
+window.RE={go,openSearch,close,search,resetSearch,detail,submitLead,service,serviceSubmit,info,secret,adminClose,adminEnter,adminAdd,adminStatus,adminDelete};
+// Make the original three property cards interactive without altering their markup or images.
+const originalCards=[...document.querySelectorAll('.property')];
+originalCards.forEach((el,i)=>{el.style.cursor='pointer';el.setAttribute('tabindex','0');el.setAttribute('role','button');el.setAttribute('aria-label','Xem chi tiết bất động sản');el.addEventListener('click',()=>detail(data.properties[i]?.id||base[i]?.id));el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();detail(data.properties[i]?.id||base[i]?.id)}})});
+// Give the existing service boxes working actions.
+const serviceKinds=['buy','sell','invest'];document.querySelectorAll('.service-box').forEach((el,i)=>{el.style.cursor='pointer';el.setAttribute('tabindex','0');el.addEventListener('click',()=>service(serviceKinds[i]));el.addEventListener('keydown',e=>{if(e.key==='Enter')service(serviceKinds[i]);});});
+// Add a tiny unobtrusive shortcut to the original footer copyright for the demo admin panel.
+})();
+</script>
+
+</body>
+</html>
